@@ -479,3 +479,13 @@ The 15.x series focuses on:
 Internal APIs may change during this phase.
 
 Public API compatibility is tracked separately from internal implementation.
+
+---
+
+## License
+
+[MIT](LICENSE) © 2026 MoicLoi
+
+发布用的桌面安装包与 APK **未做代码签名**（没有证书，也不假装签过）。
+下载后系统会提示"未知发布者 / 未知来源"，这是预期行为，不是打包出错。
+
