@@ -206,11 +206,16 @@ $excludedDirectories = @(
     '.gradle',
     '.kotlin',
     '.idea',
-    'kotlin-js-store',
+    # 仓库自己的 git 元数据。源码包是"给人看的源码"，不是仓库副本——
+    # 带上 .git 会让包大一半，还会把历史一并泄出去。
+    '.git',
     'dist-source-for-agents',
     'node_modules',
     'captures'
 )
+
+# kotlin-js-store 不排除：里面是 yarn.lock，
+# 它锁住 Web 目标的 npm 依赖，属于"要一起发出去才能复现构建"的输入。
 
 # local.properties 里写着本机的 SDK 路径，对别人无用且泄漏本地环境。
 $excludedFiles = @('local.properties')
