@@ -1,0 +1,45 @@
+CREATE TABLE relation_support (
+    subject_id TEXT NOT NULL,
+    predicate TEXT NOT NULL,
+    object_id TEXT NOT NULL,
+    valid_from TEXT NOT NULL,
+
+    evidence_id TEXT NOT NULL,
+    semantic_confidence REAL NOT NULL,
+
+    PRIMARY KEY (
+        subject_id,
+        predicate,
+        object_id,
+        valid_from,
+        evidence_id
+    ),
+
+    FOREIGN KEY (
+        evidence_id
+    )
+    REFERENCES evidence(id)
+);
+
+selectAll:
+SELECT * FROM relation_support;
+
+selectForState:
+SELECT * FROM relation_support
+WHERE subject_id = ?
+  AND predicate = ?
+  AND object_id = ?
+  AND valid_from = ?;
+
+deleteAll:
+DELETE FROM relation_support;
+
+insert:
+INSERT INTO relation_support(
+    subject_id,
+    predicate,
+    object_id,
+    valid_from,
+    evidence_id,
+    semantic_confidence
+) VALUES (?, ?, ?, ?, ?, ?);

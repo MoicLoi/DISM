@@ -1,0 +1,17 @@
+<resources>
+    <string name="recommendation_prepare_item_title">
+        准备%1$s
+    </string>
+
+    <string name="recommendation_prepare_item_known_location">
+        %1$s需要%2$s，目前最后记录在%3$s。
+    </string>
+
+    <string name="recommendation_prepare_item_unknown_location">
+        %1$s需要%2$s，目前位置未知。
+    </string>
+
+    <string name="recommendation_generic_title">
+        建议
+    </string>
+</resources>

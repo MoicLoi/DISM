@@ -1,0 +1,17 @@
+<resources>
+    <string name="recommendation_prepare_item_title">
+        Prepare %1$s
+    </string>
+
+    <string name="recommendation_prepare_item_known_location">
+        %1$s requires %2$s. Its last known location is %3$s.
+    </string>
+
+    <string name="recommendation_prepare_item_unknown_location">
+        %1$s requires %2$s. Its current location is unknown.
+    </string>
+
+    <string name="recommendation_generic_title">
+        Suggestion
+    </string>
+</resources>

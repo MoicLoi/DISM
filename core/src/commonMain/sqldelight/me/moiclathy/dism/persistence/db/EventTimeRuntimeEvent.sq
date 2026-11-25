@@ -1,0 +1,51 @@
+CREATE TABLE event_time_runtime_event (
+    id TEXT NOT NULL PRIMARY KEY,
+    runtime_state TEXT NOT NULL,
+    evaluated_at TEXT NOT NULL,
+    processed_event_count INTEGER NOT NULL,
+    generated_alarm_count INTEGER NOT NULL,
+    metadata_payload TEXT NOT NULL
+);
+
+CREATE INDEX event_time_runtime_event_evaluated_at_index
+ON event_time_runtime_event(evaluated_at);
+
+CREATE INDEX event_time_runtime_event_runtime_state_index
+ON event_time_runtime_event(runtime_state);
+
+insertEvent:
+INSERT INTO event_time_runtime_event(
+    id,
+    runtime_state,
+    evaluated_at,
+    processed_event_count,
+    generated_alarm_count,
+    metadata_payload
+)
+VALUES (?, ?, ?, ?, ?, ?);
+
+selectAll:
+SELECT
+    id,
+    runtime_state,
+    evaluated_at,
+    processed_event_count,
+    generated_alarm_count,
+    metadata_payload
+FROM event_time_runtime_event
+ORDER BY evaluated_at ASC, id ASC;
+
+selectLatest:
+SELECT
+    id,
+    runtime_state,
+    evaluated_at,
+    processed_event_count,
+    generated_alarm_count,
+    metadata_payload
+FROM event_time_runtime_event
+ORDER BY evaluated_at DESC, id DESC
+LIMIT 1;
+
+deleteAll:
+DELETE FROM event_time_runtime_event;

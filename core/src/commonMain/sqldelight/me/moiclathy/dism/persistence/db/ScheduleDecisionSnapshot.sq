@@ -1,0 +1,124 @@
+CREATE TABLE schedule_decision_snapshot (
+    snapshot_id TEXT NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    captured_at_epoch_ms INTEGER NOT NULL,
+    schedule_revision INTEGER NOT NULL,
+    engine_version TEXT NOT NULL,
+    trace_id TEXT,
+    item_title TEXT NOT NULL,
+    item_state TEXT NOT NULL,
+    item_priority REAL NOT NULL,
+    item_confidence REAL NOT NULL,
+    context_active_keys TEXT NOT NULL,
+    context_required_satisfied INTEGER NOT NULL,
+    context_excluded_satisfied INTEGER NOT NULL,
+    memory_global_factor REAL NOT NULL,
+    memory_context_factor REAL NOT NULL,
+    memory_adaptation_factor REAL NOT NULL,
+    dependency_required_satisfied INTEGER NOT NULL,
+    dependency_missing_ids TEXT NOT NULL,
+    dependency_required_count INTEGER NOT NULL,
+    policy_minimum_attention_priority REAL NOT NULL,
+    policy_minimum_attention_confidence REAL NOT NULL,
+    policy_minimum_hard_constraint_priority REAL NOT NULL,
+    policy_explicit_request_priority REAL NOT NULL,
+    policy_maximum_learned_suppression REAL NOT NULL
+);
+
+CREATE INDEX schedule_decision_snapshot_item_idx
+ON schedule_decision_snapshot(item_id, captured_at_epoch_ms);
+
+CREATE INDEX schedule_decision_snapshot_captured_idx
+ON schedule_decision_snapshot(captured_at_epoch_ms);
+
+insertOrReplace:
+INSERT OR REPLACE INTO schedule_decision_snapshot(
+    snapshot_id,
+    item_id,
+    captured_at_epoch_ms,
+    schedule_revision,
+    engine_version,
+    trace_id,
+    item_title,
+    item_state,
+    item_priority,
+    item_confidence,
+    context_active_keys,
+    context_required_satisfied,
+    context_excluded_satisfied,
+    memory_global_factor,
+    memory_context_factor,
+    memory_adaptation_factor,
+    dependency_required_satisfied,
+    dependency_missing_ids,
+    dependency_required_count,
+    policy_minimum_attention_priority,
+    policy_minimum_attention_confidence,
+    policy_minimum_hard_constraint_priority,
+    policy_explicit_request_priority,
+    policy_maximum_learned_suppression
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectById:
+SELECT *
+FROM schedule_decision_snapshot
+WHERE snapshot_id = ?;
+
+selectLatestForItem:
+SELECT *
+FROM schedule_decision_snapshot
+WHERE item_id = ?
+ORDER BY captured_at_epoch_ms DESC, snapshot_id DESC
+LIMIT 1;
+
+-- 16.32：一批条目的"最近一次"，**一条查询**。
+--
+-- 保留单条版本：只查一条时它更直接，而且已经在别处使用。
+-- 这个批量版本是为了消除调用方的 N+1。
+--
+-- 为什么不用 GROUP BY + MAX 再回联：那种写法在时间戳并列时
+-- 会返回多行。这里用相关子查询选出"时间戳等于该条目最大值"的行，
+-- 并用 ORDER BY item_id, snapshot_id DESC 让并列时的取舍与
+-- selectLatestForItem 一致（较新的 snapshot_id 在前）；
+-- 调用方取每个 item_id 的第一条即可。
+--
+-- (item_id, captured_at_epoch_ms) 上的索引让子查询的 MAX
+-- 成为一次索引查找，而不是逐行扫描。
+selectLatestForItems:
+SELECT *
+FROM schedule_decision_snapshot
+WHERE item_id IN ?
+  AND captured_at_epoch_ms = (
+      SELECT MAX(inner_s.captured_at_epoch_ms)
+      FROM schedule_decision_snapshot inner_s
+      WHERE inner_s.item_id = schedule_decision_snapshot.item_id
+  )
+ORDER BY item_id ASC, snapshot_id DESC;
+
+deleteById:
+DELETE FROM schedule_decision_snapshot
+WHERE snapshot_id = ?;
+
+deleteAll:
+DELETE FROM schedule_decision_snapshot;
+
+selectFiltered:
+SELECT *
+FROM schedule_decision_snapshot
+WHERE (:item_id IS NULL OR item_id = :item_id)
+  AND (:from_epoch_ms IS NULL OR captured_at_epoch_ms >= :from_epoch_ms)
+  AND (:until_epoch_ms IS NULL OR captured_at_epoch_ms <= :until_epoch_ms)
+  AND (:schedule_revision IS NULL OR schedule_revision = :schedule_revision)
+  AND (:engine_version IS NULL OR engine_version = :engine_version)
+ORDER BY captured_at_epoch_ms DESC, snapshot_id DESC
+LIMIT :limit;
+
+countFiltered:
+SELECT count(*)
+FROM schedule_decision_snapshot
+WHERE (:item_id IS NULL OR item_id = :item_id)
+  AND (:from_epoch_ms IS NULL OR captured_at_epoch_ms >= :from_epoch_ms)
+  AND (:until_epoch_ms IS NULL OR captured_at_epoch_ms <= :until_epoch_ms)
+  AND (:schedule_revision IS NULL OR schedule_revision = :schedule_revision)
+  AND (:engine_version IS NULL OR engine_version = :engine_version);

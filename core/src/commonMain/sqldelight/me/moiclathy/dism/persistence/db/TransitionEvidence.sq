@@ -1,0 +1,32 @@
+CREATE TABLE transition_evidence (
+    transition_id TEXT NOT NULL,
+    evidence_id TEXT NOT NULL,
+
+    PRIMARY KEY (
+        transition_id,
+        evidence_id
+    ),
+
+    FOREIGN KEY (
+        transition_id
+    )
+    REFERENCES transition_record(id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY (
+        evidence_id
+    )
+    REFERENCES evidence(id)
+);
+
+selectForTransition:
+SELECT evidence_id FROM transition_evidence WHERE transition_id = ?;
+
+insert:
+INSERT INTO transition_evidence(
+    transition_id,
+    evidence_id
+) VALUES (?, ?);
+
+deleteAll:
+DELETE FROM transition_evidence;

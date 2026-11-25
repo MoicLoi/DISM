@@ -1,0 +1,14 @@
+package me.moiclathy.dism.schedule.attention
+
+enum class DynamicScheduleAttentionExplanationReasonType {
+    SCHEDULE_PRIORITY,
+    TEMPORAL_URGENCY,
+    REQUIRED_DEPENDENCY,
+    REQUIRED_CONTEXT,
+    HARD_TEMPORAL_ANCHOR,
+    GLOBAL_ATTENTION_MEMORY,
+    CONTEXT_ATTENTION_MEMORY,
+    EXPLICIT_USER_REQUEST,
+    MEMORY_OVERRIDE,
+    CONSTRAINT_OVERRIDE,
+}

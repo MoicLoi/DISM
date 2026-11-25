@@ -1,0 +1,1051 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, js, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <dism:core>
+open annotation class me.moiclathy.dism.api/DismInternalApi : kotlin/Annotation { // me.moiclathy.dism.api/DismInternalApi|null[0]
+    constructor <init>() // me.moiclathy.dism.api/DismInternalApi.<init>|<init>(){}[0]
+}
+
+open annotation class me.moiclathy.dism.api/DismPublicApi : kotlin/Annotation { // me.moiclathy.dism.api/DismPublicApi|null[0]
+    constructor <init>() // me.moiclathy.dism.api/DismPublicApi.<init>|<init>(){}[0]
+}
+
+final enum class me.moiclathy.dism.api/DismFailureCode : kotlin/Enum<me.moiclathy.dism.api/DismFailureCode> { // me.moiclathy.dism.api/DismFailureCode|null[0]
+    enum entry INTERNAL_FAILURE // me.moiclathy.dism.api/DismFailureCode.INTERNAL_FAILURE|null[0]
+    enum entry INVALID_CONFIGURATION // me.moiclathy.dism.api/DismFailureCode.INVALID_CONFIGURATION|null[0]
+    enum entry INVALID_INPUT // me.moiclathy.dism.api/DismFailureCode.INVALID_INPUT|null[0]
+    enum entry INVALID_STATE // me.moiclathy.dism.api/DismFailureCode.INVALID_STATE|null[0]
+    enum entry OPERATION_REJECTED // me.moiclathy.dism.api/DismFailureCode.OPERATION_REJECTED|null[0]
+    enum entry REPLAY_UNAVAILABLE // me.moiclathy.dism.api/DismFailureCode.REPLAY_UNAVAILABLE|null[0]
+    enum entry STORAGE_FAILURE // me.moiclathy.dism.api/DismFailureCode.STORAGE_FAILURE|null[0]
+    enum entry STORAGE_UNAVAILABLE // me.moiclathy.dism.api/DismFailureCode.STORAGE_UNAVAILABLE|null[0]
+    enum entry UNSUPPORTED_CAPABILITY // me.moiclathy.dism.api/DismFailureCode.UNSUPPORTED_CAPABILITY|null[0]
+
+    final val entries // me.moiclathy.dism.api/DismFailureCode.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.api/DismFailureCode> // me.moiclathy.dism.api/DismFailureCode.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.api/DismFailureCode // me.moiclathy.dism.api/DismFailureCode.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.api/DismFailureCode> // me.moiclathy.dism.api/DismFailureCode.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.config/DismStorageMode : kotlin/Enum<me.moiclathy.dism.config/DismStorageMode> { // me.moiclathy.dism.config/DismStorageMode|null[0]
+    enum entry IN_MEMORY // me.moiclathy.dism.config/DismStorageMode.IN_MEMORY|null[0]
+    enum entry LOCAL // me.moiclathy.dism.config/DismStorageMode.LOCAL|null[0]
+
+    final val entries // me.moiclathy.dism.config/DismStorageMode.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.config/DismStorageMode> // me.moiclathy.dism.config/DismStorageMode.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.config/DismStorageMode // me.moiclathy.dism.config/DismStorageMode.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.config/DismStorageMode> // me.moiclathy.dism.config/DismStorageMode.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.diagnostics/DismDiagnosticLevel : kotlin/Enum<me.moiclathy.dism.diagnostics/DismDiagnosticLevel> { // me.moiclathy.dism.diagnostics/DismDiagnosticLevel|null[0]
+    enum entry DEBUG // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.DEBUG|null[0]
+    enum entry ERROR // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.ERROR|null[0]
+    enum entry INFO // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.INFO|null[0]
+    enum entry WARN // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.WARN|null[0]
+
+    final val entries // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.diagnostics/DismDiagnosticLevel> // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.diagnostics/DismDiagnosticLevel // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.diagnostics/DismDiagnosticLevel> // me.moiclathy.dism.diagnostics/DismDiagnosticLevel.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.platform/DismPlatform : kotlin/Enum<me.moiclathy.dism.platform/DismPlatform> { // me.moiclathy.dism.platform/DismPlatform|null[0]
+    enum entry ANDROID // me.moiclathy.dism.platform/DismPlatform.ANDROID|null[0]
+    enum entry JS // me.moiclathy.dism.platform/DismPlatform.JS|null[0]
+    enum entry JVM // me.moiclathy.dism.platform/DismPlatform.JVM|null[0]
+    enum entry NATIVE // me.moiclathy.dism.platform/DismPlatform.NATIVE|null[0]
+    enum entry SERVER // me.moiclathy.dism.platform/DismPlatform.SERVER|null[0]
+    enum entry UNKNOWN // me.moiclathy.dism.platform/DismPlatform.UNKNOWN|null[0]
+    enum entry WASM // me.moiclathy.dism.platform/DismPlatform.WASM|null[0]
+
+    final val entries // me.moiclathy.dism.platform/DismPlatform.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.platform/DismPlatform> // me.moiclathy.dism.platform/DismPlatform.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.platform/DismPlatform // me.moiclathy.dism.platform/DismPlatform.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.platform/DismPlatform> // me.moiclathy.dism.platform/DismPlatform.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.platform/DismPlatformCapability : kotlin/Enum<me.moiclathy.dism.platform/DismPlatformCapability> { // me.moiclathy.dism.platform/DismPlatformCapability|null[0]
+    enum entry BACKGROUND_EXECUTION // me.moiclathy.dism.platform/DismPlatformCapability.BACKGROUND_EXECUTION|null[0]
+    enum entry FILE_SYSTEM // me.moiclathy.dism.platform/DismPlatformCapability.FILE_SYSTEM|null[0]
+    enum entry LOCAL_STORAGE // me.moiclathy.dism.platform/DismPlatformCapability.LOCAL_STORAGE|null[0]
+    enum entry NETWORK // me.moiclathy.dism.platform/DismPlatformCapability.NETWORK|null[0]
+    enum entry NOTIFICATIONS // me.moiclathy.dism.platform/DismPlatformCapability.NOTIFICATIONS|null[0]
+    enum entry SECURE_STORAGE // me.moiclathy.dism.platform/DismPlatformCapability.SECURE_STORAGE|null[0]
+
+    final val entries // me.moiclathy.dism.platform/DismPlatformCapability.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.platform/DismPlatformCapability> // me.moiclathy.dism.platform/DismPlatformCapability.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.platform/DismPlatformCapability // me.moiclathy.dism.platform/DismPlatformCapability.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.platform/DismPlatformCapability> // me.moiclathy.dism.platform/DismPlatformCapability.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.provider/DismProviderCapability : kotlin/Enum<me.moiclathy.dism.provider/DismProviderCapability> { // me.moiclathy.dism.provider/DismProviderCapability|null[0]
+    enum entry NATURAL_LANGUAGE // me.moiclathy.dism.provider/DismProviderCapability.NATURAL_LANGUAGE|null[0]
+    enum entry READ // me.moiclathy.dism.provider/DismProviderCapability.READ|null[0]
+    enum entry SEMANTIC_EXTRACTION // me.moiclathy.dism.provider/DismProviderCapability.SEMANTIC_EXTRACTION|null[0]
+    enum entry STREAM // me.moiclathy.dism.provider/DismProviderCapability.STREAM|null[0]
+    enum entry SYNC // me.moiclathy.dism.provider/DismProviderCapability.SYNC|null[0]
+    enum entry WRITE // me.moiclathy.dism.provider/DismProviderCapability.WRITE|null[0]
+
+    final val entries // me.moiclathy.dism.provider/DismProviderCapability.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.provider/DismProviderCapability> // me.moiclathy.dism.provider/DismProviderCapability.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.provider/DismProviderCapability // me.moiclathy.dism.provider/DismProviderCapability.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.provider/DismProviderCapability> // me.moiclathy.dism.provider/DismProviderCapability.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.schedule.model/DynamicScheduleItemType : kotlin/Enum<me.moiclathy.dism.schedule.model/DynamicScheduleItemType> { // me.moiclathy.dism.schedule.model/DynamicScheduleItemType|null[0]
+    enum entry APPOINTMENT // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.APPOINTMENT|null[0]
+    enum entry EVENT // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.EVENT|null[0]
+    enum entry OTHER // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.OTHER|null[0]
+    enum entry REMINDER // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.REMINDER|null[0]
+    enum entry ROUTINE // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.ROUTINE|null[0]
+    enum entry TASK // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.TASK|null[0]
+
+    final val entries // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.schedule.model/DynamicScheduleItemType> // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.schedule.model/DynamicScheduleItemType // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.schedule.model/DynamicScheduleItemType> // me.moiclathy.dism.schedule.model/DynamicScheduleItemType.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.schedule.model/DynamicScheduleSource : kotlin/Enum<me.moiclathy.dism.schedule.model/DynamicScheduleSource> { // me.moiclathy.dism.schedule.model/DynamicScheduleSource|null[0]
+    enum entry DERIVED // me.moiclathy.dism.schedule.model/DynamicScheduleSource.DERIVED|null[0]
+    enum entry EXTERNAL // me.moiclathy.dism.schedule.model/DynamicScheduleSource.EXTERNAL|null[0]
+    enum entry SYSTEM // me.moiclathy.dism.schedule.model/DynamicScheduleSource.SYSTEM|null[0]
+    enum entry USER_INPUT // me.moiclathy.dism.schedule.model/DynamicScheduleSource.USER_INPUT|null[0]
+
+    final val entries // me.moiclathy.dism.schedule.model/DynamicScheduleSource.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.schedule.model/DynamicScheduleSource> // me.moiclathy.dism.schedule.model/DynamicScheduleSource.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.schedule.model/DynamicScheduleSource // me.moiclathy.dism.schedule.model/DynamicScheduleSource.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.schedule.model/DynamicScheduleSource> // me.moiclathy.dism.schedule.model/DynamicScheduleSource.values|values#static(){}[0]
+}
+
+final enum class me.moiclathy.dism.schedule.model/DynamicScheduleState : kotlin/Enum<me.moiclathy.dism.schedule.model/DynamicScheduleState> { // me.moiclathy.dism.schedule.model/DynamicScheduleState|null[0]
+    enum entry ACTIVE // me.moiclathy.dism.schedule.model/DynamicScheduleState.ACTIVE|null[0]
+    enum entry BLOCKED // me.moiclathy.dism.schedule.model/DynamicScheduleState.BLOCKED|null[0]
+    enum entry CANCELLED // me.moiclathy.dism.schedule.model/DynamicScheduleState.CANCELLED|null[0]
+    enum entry COMPLETED // me.moiclathy.dism.schedule.model/DynamicScheduleState.COMPLETED|null[0]
+    enum entry EXPIRED // me.moiclathy.dism.schedule.model/DynamicScheduleState.EXPIRED|null[0]
+    enum entry POSTPONED // me.moiclathy.dism.schedule.model/DynamicScheduleState.POSTPONED|null[0]
+    enum entry READY // me.moiclathy.dism.schedule.model/DynamicScheduleState.READY|null[0]
+    enum entry UNSCHEDULED // me.moiclathy.dism.schedule.model/DynamicScheduleState.UNSCHEDULED|null[0]
+    enum entry UPCOMING // me.moiclathy.dism.schedule.model/DynamicScheduleState.UPCOMING|null[0]
+
+    final val entries // me.moiclathy.dism.schedule.model/DynamicScheduleState.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<me.moiclathy.dism.schedule.model/DynamicScheduleState> // me.moiclathy.dism.schedule.model/DynamicScheduleState.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): me.moiclathy.dism.schedule.model/DynamicScheduleState // me.moiclathy.dism.schedule.model/DynamicScheduleState.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<me.moiclathy.dism.schedule.model/DynamicScheduleState> // me.moiclathy.dism.schedule.model/DynamicScheduleState.values|values#static(){}[0]
+}
+
+abstract fun interface me.moiclathy.dism.diagnostics/DismDiagnosticSink { // me.moiclathy.dism.diagnostics/DismDiagnosticSink|null[0]
+    abstract fun emit(me.moiclathy.dism.diagnostics/DismDiagnosticEvent) // me.moiclathy.dism.diagnostics/DismDiagnosticSink.emit|emit(me.moiclathy.dism.diagnostics.DismDiagnosticEvent){}[0]
+}
+
+abstract interface me.moiclathy.dism.api/Dism { // me.moiclathy.dism.api/Dism|null[0]
+    abstract val apiVersion // me.moiclathy.dism.api/Dism.apiVersion|{}apiVersion[0]
+        abstract fun <get-apiVersion>(): kotlin/String // me.moiclathy.dism.api/Dism.apiVersion.<get-apiVersion>|<get-apiVersion>(){}[0]
+    abstract val capabilities // me.moiclathy.dism.api/Dism.capabilities|{}capabilities[0]
+        abstract fun <get-capabilities>(): me.moiclathy.dism.api/DismCapabilities // me.moiclathy.dism.api/Dism.capabilities.<get-capabilities>|<get-capabilities>(){}[0]
+    abstract val runtime // me.moiclathy.dism.api/Dism.runtime|{}runtime[0]
+        abstract fun <get-runtime>(): me.moiclathy.dism.runtime/DismRuntimeApi // me.moiclathy.dism.api/Dism.runtime.<get-runtime>|<get-runtime>(){}[0]
+}
+
+abstract interface me.moiclathy.dism.platform/DismPlatformEntryPoint { // me.moiclathy.dism.platform/DismPlatformEntryPoint|null[0]
+    abstract val platform // me.moiclathy.dism.platform/DismPlatformEntryPoint.platform|{}platform[0]
+        abstract fun <get-platform>(): me.moiclathy.dism.platform/DismPlatformInfo // me.moiclathy.dism.platform/DismPlatformEntryPoint.platform.<get-platform>|<get-platform>(){}[0]
+
+    abstract fun create(me.moiclathy.dism.config/DismConfiguration): me.moiclathy.dism.api/Dism // me.moiclathy.dism.platform/DismPlatformEntryPoint.create|create(me.moiclathy.dism.config.DismConfiguration){}[0]
+}
+
+abstract interface me.moiclathy.dism.provider/DismProvider { // me.moiclathy.dism.provider/DismProvider|null[0]
+    abstract val capabilities // me.moiclathy.dism.provider/DismProvider.capabilities|{}capabilities[0]
+        abstract fun <get-capabilities>(): kotlin.collections/Set<me.moiclathy.dism.provider/DismProviderCapability> // me.moiclathy.dism.provider/DismProvider.capabilities.<get-capabilities>|<get-capabilities>(){}[0]
+    abstract val id // me.moiclathy.dism.provider/DismProvider.id|{}id[0]
+        abstract fun <get-id>(): kotlin/String // me.moiclathy.dism.provider/DismProvider.id.<get-id>|<get-id>(){}[0]
+    abstract val name // me.moiclathy.dism.provider/DismProvider.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // me.moiclathy.dism.provider/DismProvider.name.<get-name>|<get-name>(){}[0]
+    abstract val version // me.moiclathy.dism.provider/DismProvider.version|{}version[0]
+        abstract fun <get-version>(): kotlin/String // me.moiclathy.dism.provider/DismProvider.version.<get-version>|<get-version>(){}[0]
+}
+
+abstract interface me.moiclathy.dism.provider/DismProviderRegistry { // me.moiclathy.dism.provider/DismProviderRegistry|null[0]
+    abstract fun all(): kotlin.collections/List<me.moiclathy.dism.provider/DismProvider> // me.moiclathy.dism.provider/DismProviderRegistry.all|all(){}[0]
+    abstract fun find(kotlin/String): me.moiclathy.dism.provider/DismProvider? // me.moiclathy.dism.provider/DismProviderRegistry.find|find(kotlin.String){}[0]
+    abstract fun register(me.moiclathy.dism.provider/DismProvider) // me.moiclathy.dism.provider/DismProviderRegistry.register|register(me.moiclathy.dism.provider.DismProvider){}[0]
+    abstract fun unregister(kotlin/String) // me.moiclathy.dism.provider/DismProviderRegistry.unregister|unregister(kotlin.String){}[0]
+}
+
+abstract interface me.moiclathy.dism.runtime/DismRuntimeApi { // me.moiclathy.dism.runtime/DismRuntimeApi|null[0]
+    abstract fun currentStates(): kotlin.collections/List<me.moiclathy.dism.state.model/RelationState> // me.moiclathy.dism.runtime/DismRuntimeApi.currentStates|currentStates(){}[0]
+    abstract fun dynamicSchedule(kotlin.collections/Map<me.moiclathy.dism.schedule.model/DynamicScheduleItemId, kotlin/String> = ...): me.moiclathy.dism.schedule.api/DynamicScheduleFacade // me.moiclathy.dism.runtime/DismRuntimeApi.dynamicSchedule|dynamicSchedule(kotlin.collections.Map<me.moiclathy.dism.schedule.model.DynamicScheduleItemId,kotlin.String>){}[0]
+    abstract fun observe(me.moiclathy.dism.semantic.observation/SemanticObservationDraft, me.moiclathy.dism.context/Context): me.moiclathy.dism.semantic.engine/ObserveResult // me.moiclathy.dism.runtime/DismRuntimeApi.observe|observe(me.moiclathy.dism.semantic.observation.SemanticObservationDraft;me.moiclathy.dism.context.Context){}[0]
+    abstract fun observeAndEvaluate(me.moiclathy.dism.semantic.observation/SemanticObservationDraft, me.moiclathy.dism.context/Context, kotlin.uuid/Uuid, me.moiclathy.dism.attention/AttentionPolicy = ...): me.moiclathy.dism.semantic.engine/ReactiveEvaluationResult // me.moiclathy.dism.runtime/DismRuntimeApi.observeAndEvaluate|observeAndEvaluate(me.moiclathy.dism.semantic.observation.SemanticObservationDraft;me.moiclathy.dism.context.Context;kotlin.uuid.Uuid;me.moiclathy.dism.attention.AttentionPolicy){}[0]
+    abstract fun queryAt(kotlin.time/Instant, kotlin.uuid/Uuid? = ..., me.moiclathy.dism.domain.relation/Predicate? = ..., kotlin.uuid/Uuid? = ..., kotlin/Double = ...): kotlin.collections/List<me.moiclathy.dism.state.model/RelationState> // me.moiclathy.dism.runtime/DismRuntimeApi.queryAt|queryAt(kotlin.time.Instant;kotlin.uuid.Uuid?;me.moiclathy.dism.domain.relation.Predicate?;kotlin.uuid.Uuid?;kotlin.Double){}[0]
+    abstract fun snapshot(): me.moiclathy.dism.runtime/RuntimeSnapshot // me.moiclathy.dism.runtime/DismRuntimeApi.snapshot|snapshot(){}[0]
+}
+
+abstract interface me.moiclathy.dism.schedule.api/DynamicScheduleFacade { // me.moiclathy.dism.schedule.api/DynamicScheduleFacade|null[0]
+    abstract val history // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.history|{}history[0]
+        abstract fun <get-history>(): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryFacade // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.history.<get-history>|<get-history>(){}[0]
+
+    abstract suspend fun evaluate(me.moiclathy.dism.schedule.model/DynamicScheduleModel, kotlin.time/Instant): me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.evaluate|evaluate(me.moiclathy.dism.schedule.model.DynamicScheduleModel;kotlin.time.Instant){}[0]
+    abstract suspend fun latestDecision(me.moiclathy.dism.schedule.model/DynamicScheduleItemId): me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView? // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.latestDecision|latestDecision(me.moiclathy.dism.schedule.model.DynamicScheduleItemId){}[0]
+    abstract suspend fun latestDecisions(kotlin.collections/Collection<me.moiclathy.dism.schedule.model/DynamicScheduleItemId>): kotlin.collections/Map<me.moiclathy.dism.schedule.model/DynamicScheduleItemId, me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView> // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.latestDecisions|latestDecisions(kotlin.collections.Collection<me.moiclathy.dism.schedule.model.DynamicScheduleItemId>){}[0]
+    abstract suspend fun preview(me.moiclathy.dism.schedule.model/DynamicScheduleModel, kotlin.time/Instant): me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation // me.moiclathy.dism.schedule.api/DynamicScheduleFacade.preview|preview(me.moiclathy.dism.schedule.model.DynamicScheduleModel;kotlin.time.Instant){}[0]
+}
+
+abstract interface me.moiclathy.dism.schedule.api/DynamicScheduleHistoryFacade { // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryFacade|null[0]
+    abstract suspend fun latest(me.moiclathy.dism.schedule.model/DynamicScheduleItemId): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry? // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryFacade.latest|latest(me.moiclathy.dism.schedule.model.DynamicScheduleItemId){}[0]
+    abstract suspend fun query(me.moiclathy.dism.schedule.model/DynamicScheduleItemId, me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery = ...): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryFacade.query|query(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;me.moiclathy.dism.schedule.api.DynamicScheduleHistoryQuery){}[0]
+}
+
+sealed interface <#A: out kotlin/Any?> me.moiclathy.dism.api/DismOperationResult { // me.moiclathy.dism.api/DismOperationResult|null[0]
+    final class <#A1: kotlin/Any?> Success : me.moiclathy.dism.api/DismOperationResult<#A1> { // me.moiclathy.dism.api/DismOperationResult.Success|null[0]
+        constructor <init>(#A1) // me.moiclathy.dism.api/DismOperationResult.Success.<init>|<init>(1:0){}[0]
+
+        final val value // me.moiclathy.dism.api/DismOperationResult.Success.value|{}value[0]
+            final fun <get-value>(): #A1 // me.moiclathy.dism.api/DismOperationResult.Success.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): #A1 // me.moiclathy.dism.api/DismOperationResult.Success.component1|component1(){}[0]
+        final fun copy(#A1 = ...): me.moiclathy.dism.api/DismOperationResult.Success<#A1> // me.moiclathy.dism.api/DismOperationResult.Success.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.api/DismOperationResult.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.api/DismOperationResult.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.api/DismOperationResult.Success.toString|toString(){}[0]
+    }
+
+    final class Failure : me.moiclathy.dism.api/DismOperationResult<kotlin/Nothing> { // me.moiclathy.dism.api/DismOperationResult.Failure|null[0]
+        constructor <init>(me.moiclathy.dism.api/DismFailure) // me.moiclathy.dism.api/DismOperationResult.Failure.<init>|<init>(me.moiclathy.dism.api.DismFailure){}[0]
+
+        final val error // me.moiclathy.dism.api/DismOperationResult.Failure.error|{}error[0]
+            final fun <get-error>(): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.api/DismOperationResult.Failure.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.api/DismOperationResult.Failure.component1|component1(){}[0]
+        final fun copy(me.moiclathy.dism.api/DismFailure = ...): me.moiclathy.dism.api/DismOperationResult.Failure // me.moiclathy.dism.api/DismOperationResult.Failure.copy|copy(me.moiclathy.dism.api.DismFailure){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.api/DismOperationResult.Failure.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.api/DismOperationResult.Failure.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.api/DismOperationResult.Failure.toString|toString(){}[0]
+    }
+}
+
+sealed interface <#A: out kotlin/Any?> me.moiclathy.dism.provider/DismProviderResult { // me.moiclathy.dism.provider/DismProviderResult|null[0]
+    final class <#A1: kotlin/Any?> Success : me.moiclathy.dism.provider/DismProviderResult<#A1> { // me.moiclathy.dism.provider/DismProviderResult.Success|null[0]
+        constructor <init>(#A1) // me.moiclathy.dism.provider/DismProviderResult.Success.<init>|<init>(1:0){}[0]
+
+        final val value // me.moiclathy.dism.provider/DismProviderResult.Success.value|{}value[0]
+            final fun <get-value>(): #A1 // me.moiclathy.dism.provider/DismProviderResult.Success.value.<get-value>|<get-value>(){}[0]
+
+        final fun component1(): #A1 // me.moiclathy.dism.provider/DismProviderResult.Success.component1|component1(){}[0]
+        final fun copy(#A1 = ...): me.moiclathy.dism.provider/DismProviderResult.Success<#A1> // me.moiclathy.dism.provider/DismProviderResult.Success.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.provider/DismProviderResult.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.provider/DismProviderResult.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.provider/DismProviderResult.Success.toString|toString(){}[0]
+    }
+
+    final class Failure : me.moiclathy.dism.provider/DismProviderResult<kotlin/Nothing> { // me.moiclathy.dism.provider/DismProviderResult.Failure|null[0]
+        constructor <init>(me.moiclathy.dism.api/DismFailure) // me.moiclathy.dism.provider/DismProviderResult.Failure.<init>|<init>(me.moiclathy.dism.api.DismFailure){}[0]
+
+        final val error // me.moiclathy.dism.provider/DismProviderResult.Failure.error|{}error[0]
+            final fun <get-error>(): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.provider/DismProviderResult.Failure.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.provider/DismProviderResult.Failure.component1|component1(){}[0]
+        final fun copy(me.moiclathy.dism.api/DismFailure = ...): me.moiclathy.dism.provider/DismProviderResult.Failure // me.moiclathy.dism.provider/DismProviderResult.Failure.copy|copy(me.moiclathy.dism.api.DismFailure){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.provider/DismProviderResult.Failure.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.provider/DismProviderResult.Failure.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.provider/DismProviderResult.Failure.toString|toString(){}[0]
+    }
+}
+
+sealed interface me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal|null[0]
+    open val endAt // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.endAt|{}endAt[0]
+        open fun <get-endAt>(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.endAt.<get-endAt>|<get-endAt>(){}[0]
+    open val startAt // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.startAt|{}startAt[0]
+        open fun <get-startAt>(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.startAt.<get-startAt>|<get-startAt>(){}[0]
+
+    final class At : me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At|null[0]
+        constructor <init>(kotlin.time/Instant) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.<init>|<init>(kotlin.time.Instant){}[0]
+
+        final val startAt // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.startAt|{}startAt[0]
+            final fun <get-startAt>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.startAt.<get-startAt>|<get-startAt>(){}[0]
+
+        final fun component1(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.component1|component1(){}[0]
+        final fun copy(kotlin.time/Instant = ...): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.copy|copy(kotlin.time.Instant){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At> { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer|null[0]
+            final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal.At){}[0]
+        }
+
+        final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.At.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Deadline : me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline|null[0]
+        constructor <init>(kotlin.time/Instant) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.<init>|<init>(kotlin.time.Instant){}[0]
+
+        final val deadline // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.deadline|{}deadline[0]
+            final fun <get-deadline>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.deadline.<get-deadline>|<get-deadline>(){}[0]
+
+        final fun component1(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.component1|component1(){}[0]
+        final fun copy(kotlin.time/Instant = ...): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.copy|copy(kotlin.time.Instant){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline> { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer|null[0]
+            final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal.Deadline){}[0]
+        }
+
+        final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Deadline.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Interval : me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval|null[0]
+        constructor <init>(kotlin.time/Instant, kotlin.time/Instant) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.<init>|<init>(kotlin.time.Instant;kotlin.time.Instant){}[0]
+
+        final val endAt // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.endAt|{}endAt[0]
+            final fun <get-endAt>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.endAt.<get-endAt>|<get-endAt>(){}[0]
+        final val startAt // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.startAt|{}startAt[0]
+            final fun <get-startAt>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.startAt.<get-startAt>|<get-startAt>(){}[0]
+
+        final fun component1(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.component1|component1(){}[0]
+        final fun component2(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.component2|component2(){}[0]
+        final fun copy(kotlin.time/Instant = ..., kotlin.time/Instant = ...): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.copy|copy(kotlin.time.Instant;kotlin.time.Instant){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval> { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer|null[0]
+            final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal.Interval){}[0]
+        }
+
+        final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Interval.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final class Window : me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window|null[0]
+        constructor <init>(kotlin.time/Instant, kotlin.time/Instant) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.<init>|<init>(kotlin.time.Instant;kotlin.time.Instant){}[0]
+
+        final val earliestStart // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.earliestStart|{}earliestStart[0]
+            final fun <get-earliestStart>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.earliestStart.<get-earliestStart>|<get-earliestStart>(){}[0]
+        final val latestStart // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.latestStart|{}latestStart[0]
+            final fun <get-latestStart>(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.latestStart.<get-latestStart>|<get-latestStart>(){}[0]
+
+        final fun component1(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.component1|component1(){}[0]
+        final fun component2(): kotlin.time/Instant // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.component2|component2(){}[0]
+        final fun copy(kotlin.time/Instant = ..., kotlin.time/Instant = ...): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.copy|copy(kotlin.time.Instant;kotlin.time.Instant){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.toString|toString(){}[0]
+
+        final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window> { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer|null[0]
+            final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer.descriptor|{}descriptor[0]
+                final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+            final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer.childSerializers|childSerializers(){}[0]
+            final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+            final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window) // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal.Window){}[0]
+        }
+
+        final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.Companion|null[0]
+            final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Window.Companion.serializer|serializer(){}[0]
+        }
+    }
+
+    final object Companion : kotlinx.serialization.internal/SerializerFactory { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Companion.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Companion.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+    }
+
+    final object Unscheduled : kotlinx.serialization.internal/SerializerFactory, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal { // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled.hashCode|hashCode(){}[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled.serializer|serializer(){}[0]
+        final fun serializer(kotlin/Array<out kotlinx.serialization/KSerializer<*>>...): kotlinx.serialization/KSerializer<*> // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled.serializer|serializer(kotlin.Array<out|kotlinx.serialization.KSerializer<*>>...){}[0]
+        final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleTemporal.Unscheduled.toString|toString(){}[0]
+    }
+}
+
+final class me.moiclathy.dism.api/DismCapabilities { // me.moiclathy.dism.api/DismCapabilities|null[0]
+    constructor <init>(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...) // me.moiclathy.dism.api/DismCapabilities.<init>|<init>(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+
+    final val adaptation // me.moiclathy.dism.api/DismCapabilities.adaptation|{}adaptation[0]
+        final fun <get-adaptation>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.adaptation.<get-adaptation>|<get-adaptation>(){}[0]
+    final val attention // me.moiclathy.dism.api/DismCapabilities.attention|{}attention[0]
+        final fun <get-attention>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.attention.<get-attention>|<get-attention>(){}[0]
+    final val dynamicSchedule // me.moiclathy.dism.api/DismCapabilities.dynamicSchedule|{}dynamicSchedule[0]
+        final fun <get-dynamicSchedule>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.dynamicSchedule.<get-dynamicSchedule>|<get-dynamicSchedule>(){}[0]
+    final val localFirst // me.moiclathy.dism.api/DismCapabilities.localFirst|{}localFirst[0]
+        final fun <get-localFirst>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.localFirst.<get-localFirst>|<get-localFirst>(){}[0]
+    final val persistence // me.moiclathy.dism.api/DismCapabilities.persistence|{}persistence[0]
+        final fun <get-persistence>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.persistence.<get-persistence>|<get-persistence>(){}[0]
+    final val replay // me.moiclathy.dism.api/DismCapabilities.replay|{}replay[0]
+        final fun <get-replay>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.replay.<get-replay>|<get-replay>(){}[0]
+    final val semanticState // me.moiclathy.dism.api/DismCapabilities.semanticState|{}semanticState[0]
+        final fun <get-semanticState>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.semanticState.<get-semanticState>|<get-semanticState>(){}[0]
+    final val verification // me.moiclathy.dism.api/DismCapabilities.verification|{}verification[0]
+        final fun <get-verification>(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.verification.<get-verification>|<get-verification>(){}[0]
+
+    final fun component1(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component3|component3(){}[0]
+    final fun component4(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component6|component6(){}[0]
+    final fun component7(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component7|component7(){}[0]
+    final fun component8(): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.component8|component8(){}[0]
+    final fun copy(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): me.moiclathy.dism.api/DismCapabilities // me.moiclathy.dism.api/DismCapabilities.copy|copy(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.api/DismCapabilities.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.api/DismCapabilities.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.api/DismCapabilities.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.api/DismException : kotlin/IllegalStateException { // me.moiclathy.dism.api/DismException|null[0]
+    constructor <init>(me.moiclathy.dism.api/DismFailure) // me.moiclathy.dism.api/DismException.<init>|<init>(me.moiclathy.dism.api.DismFailure){}[0]
+
+    final val failure // me.moiclathy.dism.api/DismException.failure|{}failure[0]
+        final fun <get-failure>(): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.api/DismException.failure.<get-failure>|<get-failure>(){}[0]
+}
+
+final class me.moiclathy.dism.api/DismFailure { // me.moiclathy.dism.api/DismFailure|null[0]
+    constructor <init>(me.moiclathy.dism.api/DismFailureCode, kotlin/String, kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // me.moiclathy.dism.api/DismFailure.<init>|<init>(me.moiclathy.dism.api.DismFailureCode;kotlin.String;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final val code // me.moiclathy.dism.api/DismFailure.code|{}code[0]
+        final fun <get-code>(): me.moiclathy.dism.api/DismFailureCode // me.moiclathy.dism.api/DismFailure.code.<get-code>|<get-code>(){}[0]
+    final val details // me.moiclathy.dism.api/DismFailure.details|{}details[0]
+        final fun <get-details>(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.api/DismFailure.details.<get-details>|<get-details>(){}[0]
+    final val message // me.moiclathy.dism.api/DismFailure.message|{}message[0]
+        final fun <get-message>(): kotlin/String // me.moiclathy.dism.api/DismFailure.message.<get-message>|<get-message>(){}[0]
+    final val operation // me.moiclathy.dism.api/DismFailure.operation|{}operation[0]
+        final fun <get-operation>(): kotlin/String? // me.moiclathy.dism.api/DismFailure.operation.<get-operation>|<get-operation>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.api/DismFailureCode // me.moiclathy.dism.api/DismFailure.component1|component1(){}[0]
+    final fun component2(): kotlin/String // me.moiclathy.dism.api/DismFailure.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // me.moiclathy.dism.api/DismFailure.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.api/DismFailure.component4|component4(){}[0]
+    final fun copy(me.moiclathy.dism.api/DismFailureCode = ..., kotlin/String = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): me.moiclathy.dism.api/DismFailure // me.moiclathy.dism.api/DismFailure.copy|copy(me.moiclathy.dism.api.DismFailureCode;kotlin.String;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.api/DismFailure.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.api/DismFailure.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.api/DismFailure.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.config/DismConfiguration { // me.moiclathy.dism.config/DismConfiguration|null[0]
+    constructor <init>(me.moiclathy.dism.config/DismStorageConfiguration = ..., me.moiclathy.dism.config/DismRuntimeConfiguration = ..., me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration = ...) // me.moiclathy.dism.config/DismConfiguration.<init>|<init>(me.moiclathy.dism.config.DismStorageConfiguration;me.moiclathy.dism.config.DismRuntimeConfiguration;me.moiclathy.dism.diagnostics.DismDiagnosticsConfiguration){}[0]
+
+    final val diagnostics // me.moiclathy.dism.config/DismConfiguration.diagnostics|{}diagnostics[0]
+        final fun <get-diagnostics>(): me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration // me.moiclathy.dism.config/DismConfiguration.diagnostics.<get-diagnostics>|<get-diagnostics>(){}[0]
+    final val runtime // me.moiclathy.dism.config/DismConfiguration.runtime|{}runtime[0]
+        final fun <get-runtime>(): me.moiclathy.dism.config/DismRuntimeConfiguration // me.moiclathy.dism.config/DismConfiguration.runtime.<get-runtime>|<get-runtime>(){}[0]
+    final val storage // me.moiclathy.dism.config/DismConfiguration.storage|{}storage[0]
+        final fun <get-storage>(): me.moiclathy.dism.config/DismStorageConfiguration // me.moiclathy.dism.config/DismConfiguration.storage.<get-storage>|<get-storage>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.config/DismStorageConfiguration // me.moiclathy.dism.config/DismConfiguration.component1|component1(){}[0]
+    final fun component2(): me.moiclathy.dism.config/DismRuntimeConfiguration // me.moiclathy.dism.config/DismConfiguration.component2|component2(){}[0]
+    final fun component3(): me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration // me.moiclathy.dism.config/DismConfiguration.component3|component3(){}[0]
+    final fun copy(me.moiclathy.dism.config/DismStorageConfiguration = ..., me.moiclathy.dism.config/DismRuntimeConfiguration = ..., me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration = ...): me.moiclathy.dism.config/DismConfiguration // me.moiclathy.dism.config/DismConfiguration.copy|copy(me.moiclathy.dism.config.DismStorageConfiguration;me.moiclathy.dism.config.DismRuntimeConfiguration;me.moiclathy.dism.diagnostics.DismDiagnosticsConfiguration){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.config/DismConfiguration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.config/DismConfiguration.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.config/DismConfiguration.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.config/DismRuntimeConfiguration { // me.moiclathy.dism.config/DismRuntimeConfiguration|null[0]
+    constructor <init>(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...) // me.moiclathy.dism.config/DismRuntimeConfiguration.<init>|<init>(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+
+    final val enableAdaptation // me.moiclathy.dism.config/DismRuntimeConfiguration.enableAdaptation|{}enableAdaptation[0]
+        final fun <get-enableAdaptation>(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.enableAdaptation.<get-enableAdaptation>|<get-enableAdaptation>(){}[0]
+    final val enableAttention // me.moiclathy.dism.config/DismRuntimeConfiguration.enableAttention|{}enableAttention[0]
+        final fun <get-enableAttention>(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.enableAttention.<get-enableAttention>|<get-enableAttention>(){}[0]
+    final val enableDynamicSchedule // me.moiclathy.dism.config/DismRuntimeConfiguration.enableDynamicSchedule|{}enableDynamicSchedule[0]
+        final fun <get-enableDynamicSchedule>(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.enableDynamicSchedule.<get-enableDynamicSchedule>|<get-enableDynamicSchedule>(){}[0]
+
+    final fun component1(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.component2|component2(){}[0]
+    final fun component3(): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.component3|component3(){}[0]
+    final fun copy(kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): me.moiclathy.dism.config/DismRuntimeConfiguration // me.moiclathy.dism.config/DismRuntimeConfiguration.copy|copy(kotlin.Boolean;kotlin.Boolean;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.config/DismRuntimeConfiguration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.config/DismRuntimeConfiguration.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.config/DismRuntimeConfiguration.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.config/DismStorageConfiguration { // me.moiclathy.dism.config/DismStorageConfiguration|null[0]
+    constructor <init>(me.moiclathy.dism.config/DismStorageMode = ..., kotlin/String? = ...) // me.moiclathy.dism.config/DismStorageConfiguration.<init>|<init>(me.moiclathy.dism.config.DismStorageMode;kotlin.String?){}[0]
+
+    final val databaseName // me.moiclathy.dism.config/DismStorageConfiguration.databaseName|{}databaseName[0]
+        final fun <get-databaseName>(): kotlin/String? // me.moiclathy.dism.config/DismStorageConfiguration.databaseName.<get-databaseName>|<get-databaseName>(){}[0]
+    final val mode // me.moiclathy.dism.config/DismStorageConfiguration.mode|{}mode[0]
+        final fun <get-mode>(): me.moiclathy.dism.config/DismStorageMode // me.moiclathy.dism.config/DismStorageConfiguration.mode.<get-mode>|<get-mode>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.config/DismStorageMode // me.moiclathy.dism.config/DismStorageConfiguration.component1|component1(){}[0]
+    final fun component2(): kotlin/String? // me.moiclathy.dism.config/DismStorageConfiguration.component2|component2(){}[0]
+    final fun copy(me.moiclathy.dism.config/DismStorageMode = ..., kotlin/String? = ...): me.moiclathy.dism.config/DismStorageConfiguration // me.moiclathy.dism.config/DismStorageConfiguration.copy|copy(me.moiclathy.dism.config.DismStorageMode;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.config/DismStorageConfiguration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.config/DismStorageConfiguration.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.config/DismStorageConfiguration.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.diagnostics/DismDiagnosticEvent { // me.moiclathy.dism.diagnostics/DismDiagnosticEvent|null[0]
+    constructor <init>(me.moiclathy.dism.diagnostics/DismDiagnosticLevel, kotlin/String, kotlin.time/Instant = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.<init>|<init>(me.moiclathy.dism.diagnostics.DismDiagnosticLevel;kotlin.String;kotlin.time.Instant;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final val attributes // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.attributes.<get-attributes>|<get-attributes>(){}[0]
+    final val code // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.code|{}code[0]
+        final fun <get-code>(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.code.<get-code>|<get-code>(){}[0]
+    final val component // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component|{}component[0]
+        final fun <get-component>(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component.<get-component>|<get-component>(){}[0]
+    final val level // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.level|{}level[0]
+        final fun <get-level>(): me.moiclathy.dism.diagnostics/DismDiagnosticLevel // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.level.<get-level>|<get-level>(){}[0]
+    final val message // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.message|{}message[0]
+        final fun <get-message>(): kotlin/String // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.message.<get-message>|<get-message>(){}[0]
+    final val operation // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.operation|{}operation[0]
+        final fun <get-operation>(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.operation.<get-operation>|<get-operation>(){}[0]
+    final val timestamp // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.timestamp|{}timestamp[0]
+        final fun <get-timestamp>(): kotlin.time/Instant // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.timestamp.<get-timestamp>|<get-timestamp>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.diagnostics/DismDiagnosticLevel // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component1|component1(){}[0]
+    final fun component2(): kotlin/String // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component2|component2(){}[0]
+    final fun component3(): kotlin.time/Instant // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component3|component3(){}[0]
+    final fun component4(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component6|component6(){}[0]
+    final fun component7(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.component7|component7(){}[0]
+    final fun copy(me.moiclathy.dism.diagnostics/DismDiagnosticLevel = ..., kotlin/String = ..., kotlin.time/Instant = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): me.moiclathy.dism.diagnostics/DismDiagnosticEvent // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.copy|copy(me.moiclathy.dism.diagnostics.DismDiagnosticLevel;kotlin.String;kotlin.time.Instant;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.diagnostics/DismDiagnosticEvent.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration { // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration|null[0]
+    constructor <init>(kotlin/Boolean = ..., me.moiclathy.dism.diagnostics/DismDiagnosticSink = ...) // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.<init>|<init>(kotlin.Boolean;me.moiclathy.dism.diagnostics.DismDiagnosticSink){}[0]
+
+    final val enabled // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.enabled|{}enabled[0]
+        final fun <get-enabled>(): kotlin/Boolean // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.enabled.<get-enabled>|<get-enabled>(){}[0]
+    final val sink // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.sink|{}sink[0]
+        final fun <get-sink>(): me.moiclathy.dism.diagnostics/DismDiagnosticSink // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.sink.<get-sink>|<get-sink>(){}[0]
+
+    final fun component1(): kotlin/Boolean // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.component1|component1(){}[0]
+    final fun component2(): me.moiclathy.dism.diagnostics/DismDiagnosticSink // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.component2|component2(){}[0]
+    final fun copy(kotlin/Boolean = ..., me.moiclathy.dism.diagnostics/DismDiagnosticSink = ...): me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.copy|copy(kotlin.Boolean;me.moiclathy.dism.diagnostics.DismDiagnosticSink){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.diagnostics/DismDiagnosticsConfiguration.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink : me.moiclathy.dism.diagnostics/DismDiagnosticSink { // me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink|null[0]
+    constructor <init>(kotlin/Int = ...) // me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink.<init>|<init>(kotlin.Int){}[0]
+
+    final fun clear() // me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink.clear|clear(){}[0]
+    final fun emit(me.moiclathy.dism.diagnostics/DismDiagnosticEvent) // me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink.emit|emit(me.moiclathy.dism.diagnostics.DismDiagnosticEvent){}[0]
+    final fun snapshot(): kotlin.collections/List<me.moiclathy.dism.diagnostics/DismDiagnosticEvent> // me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink.snapshot|snapshot(){}[0]
+}
+
+final class me.moiclathy.dism.example/DismApplicationExample { // me.moiclathy.dism.example/DismApplicationExample|null[0]
+    constructor <init>(me.moiclathy.dism.api/Dism) // me.moiclathy.dism.example/DismApplicationExample.<init>|<init>(me.moiclathy.dism.api.Dism){}[0]
+
+    final val apiVersion // me.moiclathy.dism.example/DismApplicationExample.apiVersion|{}apiVersion[0]
+        final fun <get-apiVersion>(): kotlin/String // me.moiclathy.dism.example/DismApplicationExample.apiVersion.<get-apiVersion>|<get-apiVersion>(){}[0]
+    final val capabilities // me.moiclathy.dism.example/DismApplicationExample.capabilities|{}capabilities[0]
+        final fun <get-capabilities>(): me.moiclathy.dism.api/DismCapabilities // me.moiclathy.dism.example/DismApplicationExample.capabilities.<get-capabilities>|<get-capabilities>(){}[0]
+    final val runtime // me.moiclathy.dism.example/DismApplicationExample.runtime|{}runtime[0]
+        final fun <get-runtime>(): me.moiclathy.dism.runtime/DismRuntimeApi // me.moiclathy.dism.example/DismApplicationExample.runtime.<get-runtime>|<get-runtime>(){}[0]
+
+    final fun start(): me.moiclathy.dism.example/DismApplicationSnapshot // me.moiclathy.dism.example/DismApplicationExample.start|start(){}[0]
+}
+
+final class me.moiclathy.dism.example/DismApplicationSnapshot { // me.moiclathy.dism.example/DismApplicationSnapshot|null[0]
+    constructor <init>(kotlin/String, me.moiclathy.dism.runtime/RuntimeSnapshot) // me.moiclathy.dism.example/DismApplicationSnapshot.<init>|<init>(kotlin.String;me.moiclathy.dism.runtime.RuntimeSnapshot){}[0]
+
+    final val activeRelationCount // me.moiclathy.dism.example/DismApplicationSnapshot.activeRelationCount|{}activeRelationCount[0]
+        final fun <get-activeRelationCount>(): kotlin/Int // me.moiclathy.dism.example/DismApplicationSnapshot.activeRelationCount.<get-activeRelationCount>|<get-activeRelationCount>(){}[0]
+    final val apiVersion // me.moiclathy.dism.example/DismApplicationSnapshot.apiVersion|{}apiVersion[0]
+        final fun <get-apiVersion>(): kotlin/String // me.moiclathy.dism.example/DismApplicationSnapshot.apiVersion.<get-apiVersion>|<get-apiVersion>(){}[0]
+    final val snapshot // me.moiclathy.dism.example/DismApplicationSnapshot.snapshot|{}snapshot[0]
+        final fun <get-snapshot>(): me.moiclathy.dism.runtime/RuntimeSnapshot // me.moiclathy.dism.example/DismApplicationSnapshot.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+    final fun component1(): kotlin/String // me.moiclathy.dism.example/DismApplicationSnapshot.component1|component1(){}[0]
+    final fun component2(): me.moiclathy.dism.runtime/RuntimeSnapshot // me.moiclathy.dism.example/DismApplicationSnapshot.component2|component2(){}[0]
+    final fun copy(kotlin/String = ..., me.moiclathy.dism.runtime/RuntimeSnapshot = ...): me.moiclathy.dism.example/DismApplicationSnapshot // me.moiclathy.dism.example/DismApplicationSnapshot.copy|copy(kotlin.String;me.moiclathy.dism.runtime.RuntimeSnapshot){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.example/DismApplicationSnapshot.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.example/DismApplicationSnapshot.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.example/DismApplicationSnapshot.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.platform/DismPlatformInfo { // me.moiclathy.dism.platform/DismPlatformInfo|null[0]
+    constructor <init>(me.moiclathy.dism.platform/DismPlatform, kotlin/String, kotlin/String? = ..., kotlin.collections/Set<me.moiclathy.dism.platform/DismPlatformCapability> = ...) // me.moiclathy.dism.platform/DismPlatformInfo.<init>|<init>(me.moiclathy.dism.platform.DismPlatform;kotlin.String;kotlin.String?;kotlin.collections.Set<me.moiclathy.dism.platform.DismPlatformCapability>){}[0]
+
+    final val capabilities // me.moiclathy.dism.platform/DismPlatformInfo.capabilities|{}capabilities[0]
+        final fun <get-capabilities>(): kotlin.collections/Set<me.moiclathy.dism.platform/DismPlatformCapability> // me.moiclathy.dism.platform/DismPlatformInfo.capabilities.<get-capabilities>|<get-capabilities>(){}[0]
+    final val platform // me.moiclathy.dism.platform/DismPlatformInfo.platform|{}platform[0]
+        final fun <get-platform>(): me.moiclathy.dism.platform/DismPlatform // me.moiclathy.dism.platform/DismPlatformInfo.platform.<get-platform>|<get-platform>(){}[0]
+    final val runtimeName // me.moiclathy.dism.platform/DismPlatformInfo.runtimeName|{}runtimeName[0]
+        final fun <get-runtimeName>(): kotlin/String // me.moiclathy.dism.platform/DismPlatformInfo.runtimeName.<get-runtimeName>|<get-runtimeName>(){}[0]
+    final val runtimeVersion // me.moiclathy.dism.platform/DismPlatformInfo.runtimeVersion|{}runtimeVersion[0]
+        final fun <get-runtimeVersion>(): kotlin/String? // me.moiclathy.dism.platform/DismPlatformInfo.runtimeVersion.<get-runtimeVersion>|<get-runtimeVersion>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.platform/DismPlatform // me.moiclathy.dism.platform/DismPlatformInfo.component1|component1(){}[0]
+    final fun component2(): kotlin/String // me.moiclathy.dism.platform/DismPlatformInfo.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // me.moiclathy.dism.platform/DismPlatformInfo.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Set<me.moiclathy.dism.platform/DismPlatformCapability> // me.moiclathy.dism.platform/DismPlatformInfo.component4|component4(){}[0]
+    final fun copy(me.moiclathy.dism.platform/DismPlatform = ..., kotlin/String = ..., kotlin/String? = ..., kotlin.collections/Set<me.moiclathy.dism.platform/DismPlatformCapability> = ...): me.moiclathy.dism.platform/DismPlatformInfo // me.moiclathy.dism.platform/DismPlatformInfo.copy|copy(me.moiclathy.dism.platform.DismPlatform;kotlin.String;kotlin.String?;kotlin.collections.Set<me.moiclathy.dism.platform.DismPlatformCapability>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.platform/DismPlatformInfo.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.platform/DismPlatformInfo.hashCode|hashCode(){}[0]
+    final fun supports(me.moiclathy.dism.platform/DismPlatformCapability): kotlin/Boolean // me.moiclathy.dism.platform/DismPlatformInfo.supports|supports(me.moiclathy.dism.platform.DismPlatformCapability){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.platform/DismPlatformInfo.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.provider/DismProviderContext { // me.moiclathy.dism.provider/DismProviderContext|null[0]
+    constructor <init>(kotlin.time/Instant, kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // me.moiclathy.dism.provider/DismProviderContext.<init>|<init>(kotlin.time.Instant;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final val attributes // me.moiclathy.dism.provider/DismProviderContext.attributes|{}attributes[0]
+        final fun <get-attributes>(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.provider/DismProviderContext.attributes.<get-attributes>|<get-attributes>(){}[0]
+    final val requestedAt // me.moiclathy.dism.provider/DismProviderContext.requestedAt|{}requestedAt[0]
+        final fun <get-requestedAt>(): kotlin.time/Instant // me.moiclathy.dism.provider/DismProviderContext.requestedAt.<get-requestedAt>|<get-requestedAt>(){}[0]
+
+    final fun component1(): kotlin.time/Instant // me.moiclathy.dism.provider/DismProviderContext.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.provider/DismProviderContext.component2|component2(){}[0]
+    final fun copy(kotlin.time/Instant = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): me.moiclathy.dism.provider/DismProviderContext // me.moiclathy.dism.provider/DismProviderContext.copy|copy(kotlin.time.Instant;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.provider/DismProviderContext.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.provider/DismProviderContext.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.provider/DismProviderContext.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.provider/DismProviderObservation { // me.moiclathy.dism.provider/DismProviderObservation|null[0]
+    constructor <init>(kotlin/String, kotlin.time/Instant, kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...) // me.moiclathy.dism.provider/DismProviderObservation.<init>|<init>(kotlin.String;kotlin.time.Instant;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+
+    final val externalKey // me.moiclathy.dism.provider/DismProviderObservation.externalKey|{}externalKey[0]
+        final fun <get-externalKey>(): kotlin/String? // me.moiclathy.dism.provider/DismProviderObservation.externalKey.<get-externalKey>|<get-externalKey>(){}[0]
+    final val observedAt // me.moiclathy.dism.provider/DismProviderObservation.observedAt|{}observedAt[0]
+        final fun <get-observedAt>(): kotlin.time/Instant // me.moiclathy.dism.provider/DismProviderObservation.observedAt.<get-observedAt>|<get-observedAt>(){}[0]
+    final val payload // me.moiclathy.dism.provider/DismProviderObservation.payload|{}payload[0]
+        final fun <get-payload>(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.provider/DismProviderObservation.payload.<get-payload>|<get-payload>(){}[0]
+    final val providerId // me.moiclathy.dism.provider/DismProviderObservation.providerId|{}providerId[0]
+        final fun <get-providerId>(): kotlin/String // me.moiclathy.dism.provider/DismProviderObservation.providerId.<get-providerId>|<get-providerId>(){}[0]
+
+    final fun component1(): kotlin/String // me.moiclathy.dism.provider/DismProviderObservation.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Instant // me.moiclathy.dism.provider/DismProviderObservation.component2|component2(){}[0]
+    final fun component3(): kotlin/String? // me.moiclathy.dism.provider/DismProviderObservation.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/Map<kotlin/String, kotlin/String> // me.moiclathy.dism.provider/DismProviderObservation.component4|component4(){}[0]
+    final fun copy(kotlin/String = ..., kotlin.time/Instant = ..., kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ...): me.moiclathy.dism.provider/DismProviderObservation // me.moiclathy.dism.provider/DismProviderObservation.copy|copy(kotlin.String;kotlin.time.Instant;kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.provider/DismProviderObservation.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.provider/DismProviderObservation.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.provider/DismProviderObservation.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.runtime/RuntimeSnapshot { // me.moiclathy.dism.runtime/RuntimeSnapshot|null[0]
+    constructor <init>(kotlin.collections/List<me.moiclathy.dism.domain.entity/Entity>, kotlin.collections/List<me.moiclathy.dism.evidence/Evidence>, kotlin.collections/List<me.moiclathy.dism.state.model/RelationState>, kotlin.collections/List<me.moiclathy.dism.state.transition/StateTransitionRecord>) // me.moiclathy.dism.runtime/RuntimeSnapshot.<init>|<init>(kotlin.collections.List<me.moiclathy.dism.domain.entity.Entity>;kotlin.collections.List<me.moiclathy.dism.evidence.Evidence>;kotlin.collections.List<me.moiclathy.dism.state.model.RelationState>;kotlin.collections.List<me.moiclathy.dism.state.transition.StateTransitionRecord>){}[0]
+
+    final val entities // me.moiclathy.dism.runtime/RuntimeSnapshot.entities|{}entities[0]
+        final fun <get-entities>(): kotlin.collections/List<me.moiclathy.dism.domain.entity/Entity> // me.moiclathy.dism.runtime/RuntimeSnapshot.entities.<get-entities>|<get-entities>(){}[0]
+    final val evidence // me.moiclathy.dism.runtime/RuntimeSnapshot.evidence|{}evidence[0]
+        final fun <get-evidence>(): kotlin.collections/List<me.moiclathy.dism.evidence/Evidence> // me.moiclathy.dism.runtime/RuntimeSnapshot.evidence.<get-evidence>|<get-evidence>(){}[0]
+    final val relationStates // me.moiclathy.dism.runtime/RuntimeSnapshot.relationStates|{}relationStates[0]
+        final fun <get-relationStates>(): kotlin.collections/List<me.moiclathy.dism.state.model/RelationState> // me.moiclathy.dism.runtime/RuntimeSnapshot.relationStates.<get-relationStates>|<get-relationStates>(){}[0]
+    final val transitions // me.moiclathy.dism.runtime/RuntimeSnapshot.transitions|{}transitions[0]
+        final fun <get-transitions>(): kotlin.collections/List<me.moiclathy.dism.state.transition/StateTransitionRecord> // me.moiclathy.dism.runtime/RuntimeSnapshot.transitions.<get-transitions>|<get-transitions>(){}[0]
+
+    final fun component1(): kotlin.collections/List<me.moiclathy.dism.domain.entity/Entity> // me.moiclathy.dism.runtime/RuntimeSnapshot.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<me.moiclathy.dism.evidence/Evidence> // me.moiclathy.dism.runtime/RuntimeSnapshot.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<me.moiclathy.dism.state.model/RelationState> // me.moiclathy.dism.runtime/RuntimeSnapshot.component3|component3(){}[0]
+    final fun component4(): kotlin.collections/List<me.moiclathy.dism.state.transition/StateTransitionRecord> // me.moiclathy.dism.runtime/RuntimeSnapshot.component4|component4(){}[0]
+    final fun copy(kotlin.collections/List<me.moiclathy.dism.domain.entity/Entity> = ..., kotlin.collections/List<me.moiclathy.dism.evidence/Evidence> = ..., kotlin.collections/List<me.moiclathy.dism.state.model/RelationState> = ..., kotlin.collections/List<me.moiclathy.dism.state.transition/StateTransitionRecord> = ...): me.moiclathy.dism.runtime/RuntimeSnapshot // me.moiclathy.dism.runtime/RuntimeSnapshot.copy|copy(kotlin.collections.List<me.moiclathy.dism.domain.entity.Entity>;kotlin.collections.List<me.moiclathy.dism.evidence.Evidence>;kotlin.collections.List<me.moiclathy.dism.state.model.RelationState>;kotlin.collections.List<me.moiclathy.dism.state.transition.StateTransitionRecord>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.runtime/RuntimeSnapshot.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.runtime/RuntimeSnapshot.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.runtime/RuntimeSnapshot.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DismScheduleImportResult { // me.moiclathy.dism.schedule.api/DismScheduleImportResult|null[0]
+    constructor <init>(me.moiclathy.dism.schedule.model/DynamicScheduleModel?, kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...) // me.moiclathy.dism.schedule.api/DismScheduleImportResult.<init>|<init>(me.moiclathy.dism.schedule.model.DynamicScheduleModel?;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+
+    final val errors // me.moiclathy.dism.schedule.api/DismScheduleImportResult.errors|{}errors[0]
+        final fun <get-errors>(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DismScheduleImportResult.errors.<get-errors>|<get-errors>(){}[0]
+    final val hasPartialFailures // me.moiclathy.dism.schedule.api/DismScheduleImportResult.hasPartialFailures|{}hasPartialFailures[0]
+        final fun <get-hasPartialFailures>(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DismScheduleImportResult.hasPartialFailures.<get-hasPartialFailures>|<get-hasPartialFailures>(){}[0]
+    final val model // me.moiclathy.dism.schedule.api/DismScheduleImportResult.model|{}model[0]
+        final fun <get-model>(): me.moiclathy.dism.schedule.model/DynamicScheduleModel? // me.moiclathy.dism.schedule.api/DismScheduleImportResult.model.<get-model>|<get-model>(){}[0]
+    final val success // me.moiclathy.dism.schedule.api/DismScheduleImportResult.success|{}success[0]
+        final fun <get-success>(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DismScheduleImportResult.success.<get-success>|<get-success>(){}[0]
+    final val warnings // me.moiclathy.dism.schedule.api/DismScheduleImportResult.warnings|{}warnings[0]
+        final fun <get-warnings>(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DismScheduleImportResult.warnings.<get-warnings>|<get-warnings>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.schedule.model/DynamicScheduleModel? // me.moiclathy.dism.schedule.api/DismScheduleImportResult.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DismScheduleImportResult.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DismScheduleImportResult.component3|component3(){}[0]
+    final fun copy(me.moiclathy.dism.schedule.model/DynamicScheduleModel? = ..., kotlin.collections/List<kotlin/String> = ..., kotlin.collections/List<kotlin/String> = ...): me.moiclathy.dism.schedule.api/DismScheduleImportResult // me.moiclathy.dism.schedule.api/DismScheduleImportResult.copy|copy(me.moiclathy.dism.schedule.model.DynamicScheduleModel?;kotlin.collections.List<kotlin.String>;kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DismScheduleImportResult.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DismScheduleImportResult.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DismScheduleImportResult.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView { // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView|null[0]
+    constructor <init>(me.moiclathy.dism.schedule.model/DynamicScheduleItemId, kotlin/String, kotlin/Double, kotlin/Boolean?, kotlin/String? = ...) // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.<init>|<init>(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;kotlin.String;kotlin.Double;kotlin.Boolean?;kotlin.String?){}[0]
+
+    final val attentionRequired // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.attentionRequired|{}attentionRequired[0]
+        final fun <get-attentionRequired>(): kotlin/Boolean? // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.attentionRequired.<get-attentionRequired>|<get-attentionRequired>(){}[0]
+    final val explanation // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.explanation|{}explanation[0]
+        final fun <get-explanation>(): kotlin/String? // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.explanation.<get-explanation>|<get-explanation>(){}[0]
+    final val itemId // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.itemId|{}itemId[0]
+        final fun <get-itemId>(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.itemId.<get-itemId>|<get-itemId>(){}[0]
+    final val priority // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.priority|{}priority[0]
+        final fun <get-priority>(): kotlin/Double // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.priority.<get-priority>|<get-priority>(){}[0]
+    final val title // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.title|{}title[0]
+        final fun <get-title>(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.title.<get-title>|<get-title>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.component1|component1(){}[0]
+    final fun component2(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.component2|component2(){}[0]
+    final fun component3(): kotlin/Double // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.component3|component3(){}[0]
+    final fun component4(): kotlin/Boolean? // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.component5|component5(){}[0]
+    final fun copy(me.moiclathy.dism.schedule.model/DynamicScheduleItemId = ..., kotlin/String = ..., kotlin/Double = ..., kotlin/Boolean? = ..., kotlin/String? = ...): me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.copy|copy(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;kotlin.String;kotlin.Double;kotlin.Boolean?;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation { // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation|null[0]
+    constructor <init>(kotlin.time/Instant, kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView>, kotlin.collections/List<kotlin/String> = ...) // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.<init>|<init>(kotlin.time.Instant;kotlin.collections.List<me.moiclathy.dism.schedule.api.DynamicScheduleDecisionView>;kotlin.collections.List<kotlin.String>){}[0]
+
+    final val attentionRequiredCount // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.attentionRequiredCount|{}attentionRequiredCount[0]
+        final fun <get-attentionRequiredCount>(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.attentionRequiredCount.<get-attentionRequiredCount>|<get-attentionRequiredCount>(){}[0]
+    final val decisions // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.decisions|{}decisions[0]
+        final fun <get-decisions>(): kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView> // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.decisions.<get-decisions>|<get-decisions>(){}[0]
+    final val diagnostics // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.diagnostics|{}diagnostics[0]
+        final fun <get-diagnostics>(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.diagnostics.<get-diagnostics>|<get-diagnostics>(){}[0]
+    final val evaluatedAt // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.evaluatedAt|{}evaluatedAt[0]
+        final fun <get-evaluatedAt>(): kotlin.time/Instant // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.evaluatedAt.<get-evaluatedAt>|<get-evaluatedAt>(){}[0]
+
+    final fun component1(): kotlin.time/Instant // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView> // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.component2|component2(){}[0]
+    final fun component3(): kotlin.collections/List<kotlin/String> // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.component3|component3(){}[0]
+    final fun copy(kotlin.time/Instant = ..., kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleDecisionView> = ..., kotlin.collections/List<kotlin/String> = ...): me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.copy|copy(kotlin.time.Instant;kotlin.collections.List<me.moiclathy.dism.schedule.api.DynamicScheduleDecisionView>;kotlin.collections.List<kotlin.String>){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleEvaluation.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry { // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry|null[0]
+    constructor <init>(me.moiclathy.dism.schedule.model/DynamicScheduleItemId, kotlin.time/Instant, kotlin/Long, kotlin/String, kotlin/Boolean) // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.<init>|<init>(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;kotlin.time.Instant;kotlin.Long;kotlin.String;kotlin.Boolean){}[0]
+
+    final val capturedAt // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.capturedAt|{}capturedAt[0]
+        final fun <get-capturedAt>(): kotlin.time/Instant // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.capturedAt.<get-capturedAt>|<get-capturedAt>(){}[0]
+    final val engineVersion // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.engineVersion|{}engineVersion[0]
+        final fun <get-engineVersion>(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.engineVersion.<get-engineVersion>|<get-engineVersion>(){}[0]
+    final val hasTrace // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.hasTrace|{}hasTrace[0]
+        final fun <get-hasTrace>(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.hasTrace.<get-hasTrace>|<get-hasTrace>(){}[0]
+    final val itemId // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.itemId|{}itemId[0]
+        final fun <get-itemId>(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.itemId.<get-itemId>|<get-itemId>(){}[0]
+    final val scheduleRevision // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.scheduleRevision|{}scheduleRevision[0]
+        final fun <get-scheduleRevision>(): kotlin/Long // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.scheduleRevision.<get-scheduleRevision>|<get-scheduleRevision>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Instant // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.component2|component2(){}[0]
+    final fun component3(): kotlin/Long // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.component3|component3(){}[0]
+    final fun component4(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.component5|component5(){}[0]
+    final fun copy(me.moiclathy.dism.schedule.model/DynamicScheduleItemId = ..., kotlin.time/Instant = ..., kotlin/Long = ..., kotlin/String = ..., kotlin/Boolean = ...): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.copy|copy(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;kotlin.time.Instant;kotlin.Long;kotlin.String;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery { // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery|null[0]
+    constructor <init>(kotlin/Int = ...) // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.<init>|<init>(kotlin.Int){}[0]
+
+    final val limit // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.limit|{}limit[0]
+        final fun <get-limit>(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.limit.<get-limit>|<get-limit>(){}[0]
+
+    final fun component1(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.component1|component1(){}[0]
+    final fun copy(kotlin/Int = ...): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.copy|copy(kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryQuery.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult { // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult|null[0]
+    constructor <init>(kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry>, kotlin/Boolean = ..., kotlin/Int = ...) // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.<init>|<init>(kotlin.collections.List<me.moiclathy.dism.schedule.api.DynamicScheduleHistoryEntry>;kotlin.Boolean;kotlin.Int){}[0]
+
+    final val entries // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.entries|{}entries[0]
+        final fun <get-entries>(): kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry> // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.entries.<get-entries>|<get-entries>(){}[0]
+    final val isEmpty // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.isEmpty|{}isEmpty[0]
+        final fun <get-isEmpty>(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.isEmpty.<get-isEmpty>|<get-isEmpty>(){}[0]
+    final val latest // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.latest|{}latest[0]
+        final fun <get-latest>(): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry? // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.latest.<get-latest>|<get-latest>(){}[0]
+    final val totalMatched // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.totalMatched|{}totalMatched[0]
+        final fun <get-totalMatched>(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.totalMatched.<get-totalMatched>|<get-totalMatched>(){}[0]
+    final val truncated // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.truncated|{}truncated[0]
+        final fun <get-truncated>(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.truncated.<get-truncated>|<get-truncated>(){}[0]
+
+    final fun component1(): kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry> // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.component1|component1(){}[0]
+    final fun component2(): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.component3|component3(){}[0]
+    final fun copy(kotlin.collections/List<me.moiclathy.dism.schedule.api/DynamicScheduleHistoryEntry> = ..., kotlin/Boolean = ..., kotlin/Int = ...): me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.copy|copy(kotlin.collections.List<me.moiclathy.dism.schedule.api.DynamicScheduleHistoryEntry>;kotlin.Boolean;kotlin.Int){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.api/DynamicScheduleHistoryResult.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.model/DynamicScheduleId { // me.moiclathy.dism.schedule.model/DynamicScheduleId|null[0]
+    constructor <init>(kotlin/String) // me.moiclathy.dism.schedule.model/DynamicScheduleId.<init>|<init>(kotlin.String){}[0]
+
+    final val value // me.moiclathy.dism.schedule.model/DynamicScheduleId.value|{}value[0]
+        final fun <get-value>(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleId.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleId.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleId.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleId.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleId.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleId.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleId> { // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer|null[0]
+        final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleId) // me.moiclathy.dism.schedule.model/DynamicScheduleId.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleId){}[0]
+    }
+
+    final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleId.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleId> // me.moiclathy.dism.schedule.model/DynamicScheduleId.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy { // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy|null[0]
+    constructor <init>(kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ...) // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.<init>|<init>(kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double){}[0]
+
+    final val defaultConfidence // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.defaultConfidence|{}defaultConfidence[0]
+        final fun <get-defaultConfidence>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.defaultConfidence.<get-defaultConfidence>|<get-defaultConfidence>(){}[0]
+    final val defaultPriority // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.defaultPriority|{}defaultPriority[0]
+        final fun <get-defaultPriority>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.defaultPriority.<get-defaultPriority>|<get-defaultPriority>(){}[0]
+    final val maximumConfidence // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.maximumConfidence|{}maximumConfidence[0]
+        final fun <get-maximumConfidence>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.maximumConfidence.<get-maximumConfidence>|<get-maximumConfidence>(){}[0]
+    final val maximumPriority // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.maximumPriority|{}maximumPriority[0]
+        final fun <get-maximumPriority>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.maximumPriority.<get-maximumPriority>|<get-maximumPriority>(){}[0]
+    final val minimumConfidence // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.minimumConfidence|{}minimumConfidence[0]
+        final fun <get-minimumConfidence>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.minimumConfidence.<get-minimumConfidence>|<get-minimumConfidence>(){}[0]
+    final val minimumPriority // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.minimumPriority|{}minimumPriority[0]
+        final fun <get-minimumPriority>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.minimumPriority.<get-minimumPriority>|<get-minimumPriority>(){}[0]
+
+    final fun clampConfidence(kotlin/Double): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.clampConfidence|clampConfidence(kotlin.Double){}[0]
+    final fun clampPriority(kotlin/Double): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.clampPriority|clampPriority(kotlin.Double){}[0]
+    final fun component1(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component1|component1(){}[0]
+    final fun component2(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component2|component2(){}[0]
+    final fun component3(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component3|component3(){}[0]
+    final fun component4(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component4|component4(){}[0]
+    final fun component5(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component5|component5(){}[0]
+    final fun component6(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.component6|component6(){}[0]
+    final fun copy(kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/Double = ...): me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.copy|copy(kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double;kotlin.Double){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleIntelligencePolicy.toString|toString(){}[0]
+}
+
+final class me.moiclathy.dism.schedule.model/DynamicScheduleItem { // me.moiclathy.dism.schedule.model/DynamicScheduleItem|null[0]
+    constructor <init>(me.moiclathy.dism.schedule.model/DynamicScheduleItemId, me.moiclathy.dism.schedule.model/DynamicScheduleId, kotlin/String, me.moiclathy.dism.schedule.model/DynamicScheduleItemType, me.moiclathy.dism.schedule.model/DynamicScheduleSource, me.moiclathy.dism.schedule.model/DynamicScheduleTemporal = ..., me.moiclathy.dism.schedule.model/DynamicScheduleState = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/String? = ..., kotlin.time/Instant? = ..., kotlin.time/Instant? = ...) // me.moiclathy.dism.schedule.model/DynamicScheduleItem.<init>|<init>(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;me.moiclathy.dism.schedule.model.DynamicScheduleId;kotlin.String;me.moiclathy.dism.schedule.model.DynamicScheduleItemType;me.moiclathy.dism.schedule.model.DynamicScheduleSource;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal;me.moiclathy.dism.schedule.model.DynamicScheduleState;kotlin.Double;kotlin.Double;kotlin.String?;kotlin.time.Instant?;kotlin.time.Instant?){}[0]
+
+    final val confidence // me.moiclathy.dism.schedule.model/DynamicScheduleItem.confidence|{}confidence[0]
+        final fun <get-confidence>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleItem.confidence.<get-confidence>|<get-confidence>(){}[0]
+    final val createdAt // me.moiclathy.dism.schedule.model/DynamicScheduleItem.createdAt|{}createdAt[0]
+        final fun <get-createdAt>(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.createdAt.<get-createdAt>|<get-createdAt>(){}[0]
+    final val externalKey // me.moiclathy.dism.schedule.model/DynamicScheduleItem.externalKey|{}externalKey[0]
+        final fun <get-externalKey>(): kotlin/String? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.externalKey.<get-externalKey>|<get-externalKey>(){}[0]
+    final val id // me.moiclathy.dism.schedule.model/DynamicScheduleItem.id|{}id[0]
+        final fun <get-id>(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.model/DynamicScheduleItem.id.<get-id>|<get-id>(){}[0]
+    final val isActive // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isActive|{}isActive[0]
+        final fun <get-isActive>(): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isActive.<get-isActive>|<get-isActive>(){}[0]
+    final val isScheduled // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isScheduled|{}isScheduled[0]
+        final fun <get-isScheduled>(): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isScheduled.<get-isScheduled>|<get-isScheduled>(){}[0]
+    final val isTerminal // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isTerminal|{}isTerminal[0]
+        final fun <get-isTerminal>(): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleItem.isTerminal.<get-isTerminal>|<get-isTerminal>(){}[0]
+    final val priority // me.moiclathy.dism.schedule.model/DynamicScheduleItem.priority|{}priority[0]
+        final fun <get-priority>(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleItem.priority.<get-priority>|<get-priority>(){}[0]
+    final val scheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleItem.scheduleId|{}scheduleId[0]
+        final fun <get-scheduleId>(): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleItem.scheduleId.<get-scheduleId>|<get-scheduleId>(){}[0]
+    final val source // me.moiclathy.dism.schedule.model/DynamicScheduleItem.source|{}source[0]
+        final fun <get-source>(): me.moiclathy.dism.schedule.model/DynamicScheduleSource // me.moiclathy.dism.schedule.model/DynamicScheduleItem.source.<get-source>|<get-source>(){}[0]
+    final val state // me.moiclathy.dism.schedule.model/DynamicScheduleItem.state|{}state[0]
+        final fun <get-state>(): me.moiclathy.dism.schedule.model/DynamicScheduleState // me.moiclathy.dism.schedule.model/DynamicScheduleItem.state.<get-state>|<get-state>(){}[0]
+    final val temporal // me.moiclathy.dism.schedule.model/DynamicScheduleItem.temporal|{}temporal[0]
+        final fun <get-temporal>(): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal // me.moiclathy.dism.schedule.model/DynamicScheduleItem.temporal.<get-temporal>|<get-temporal>(){}[0]
+    final val title // me.moiclathy.dism.schedule.model/DynamicScheduleItem.title|{}title[0]
+        final fun <get-title>(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItem.title.<get-title>|<get-title>(){}[0]
+    final val type // me.moiclathy.dism.schedule.model/DynamicScheduleItem.type|{}type[0]
+        final fun <get-type>(): me.moiclathy.dism.schedule.model/DynamicScheduleItemType // me.moiclathy.dism.schedule.model/DynamicScheduleItem.type.<get-type>|<get-type>(){}[0]
+    final val updatedAt // me.moiclathy.dism.schedule.model/DynamicScheduleItem.updatedAt|{}updatedAt[0]
+        final fun <get-updatedAt>(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.updatedAt.<get-updatedAt>|<get-updatedAt>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component1|component1(){}[0]
+    final fun component10(): kotlin/String? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component10|component10(){}[0]
+    final fun component11(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component11|component11(){}[0]
+    final fun component12(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component12|component12(){}[0]
+    final fun component2(): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component2|component2(){}[0]
+    final fun component3(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component3|component3(){}[0]
+    final fun component4(): me.moiclathy.dism.schedule.model/DynamicScheduleItemType // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component4|component4(){}[0]
+    final fun component5(): me.moiclathy.dism.schedule.model/DynamicScheduleSource // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component5|component5(){}[0]
+    final fun component6(): me.moiclathy.dism.schedule.model/DynamicScheduleTemporal // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component6|component6(){}[0]
+    final fun component7(): me.moiclathy.dism.schedule.model/DynamicScheduleState // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component7|component7(){}[0]
+    final fun component8(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component8|component8(){}[0]
+    final fun component9(): kotlin/Double // me.moiclathy.dism.schedule.model/DynamicScheduleItem.component9|component9(){}[0]
+    final fun copy(me.moiclathy.dism.schedule.model/DynamicScheduleItemId = ..., me.moiclathy.dism.schedule.model/DynamicScheduleId = ..., kotlin/String = ..., me.moiclathy.dism.schedule.model/DynamicScheduleItemType = ..., me.moiclathy.dism.schedule.model/DynamicScheduleSource = ..., me.moiclathy.dism.schedule.model/DynamicScheduleTemporal = ..., me.moiclathy.dism.schedule.model/DynamicScheduleState = ..., kotlin/Double = ..., kotlin/Double = ..., kotlin/String? = ..., kotlin.time/Instant? = ..., kotlin.time/Instant? = ...): me.moiclathy.dism.schedule.model/DynamicScheduleItem // me.moiclathy.dism.schedule.model/DynamicScheduleItem.copy|copy(me.moiclathy.dism.schedule.model.DynamicScheduleItemId;me.moiclathy.dism.schedule.model.DynamicScheduleId;kotlin.String;me.moiclathy.dism.schedule.model.DynamicScheduleItemType;me.moiclathy.dism.schedule.model.DynamicScheduleSource;me.moiclathy.dism.schedule.model.DynamicScheduleTemporal;me.moiclathy.dism.schedule.model.DynamicScheduleState;kotlin.Double;kotlin.Double;kotlin.String?;kotlin.time.Instant?;kotlin.time.Instant?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleItem.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleItem.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItem.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleItem> { // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer|null[0]
+        final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleItem // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleItem) // me.moiclathy.dism.schedule.model/DynamicScheduleItem.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleItem){}[0]
+    }
+
+    final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleItem.Companion|null[0]
+        final val $childSerializers // me.moiclathy.dism.schedule.model/DynamicScheduleItem.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleItem.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class me.moiclathy.dism.schedule.model/DynamicScheduleItemId { // me.moiclathy.dism.schedule.model/DynamicScheduleItemId|null[0]
+    constructor <init>(kotlin/String) // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.<init>|<init>(kotlin.String){}[0]
+
+    final val value // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.value|{}value[0]
+        final fun <get-value>(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.value.<get-value>|<get-value>(){}[0]
+
+    final fun component1(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.component1|component1(){}[0]
+    final fun copy(kotlin/String = ...): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.copy|copy(kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.toString|toString(){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleItemId> { // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer|null[0]
+        final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleItemId // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleItemId) // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleItemId){}[0]
+    }
+
+    final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.Companion|null[0]
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleItemId> // me.moiclathy.dism.schedule.model/DynamicScheduleItemId.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final class me.moiclathy.dism.schedule.model/DynamicScheduleModel { // me.moiclathy.dism.schedule.model/DynamicScheduleModel|null[0]
+    constructor <init>(me.moiclathy.dism.schedule.model/DynamicScheduleId, kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> = ..., kotlin.time/Instant? = ..., kotlin/Long = ...) // me.moiclathy.dism.schedule.model/DynamicScheduleModel.<init>|<init>(me.moiclathy.dism.schedule.model.DynamicScheduleId;kotlin.collections.List<me.moiclathy.dism.schedule.model.DynamicScheduleItem>;kotlin.time.Instant?;kotlin.Long){}[0]
+
+    final val activeItems // me.moiclathy.dism.schedule.model/DynamicScheduleModel.activeItems|{}activeItems[0]
+        final fun <get-activeItems>(): kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.activeItems.<get-activeItems>|<get-activeItems>(){}[0]
+    final val generatedAt // me.moiclathy.dism.schedule.model/DynamicScheduleModel.generatedAt|{}generatedAt[0]
+        final fun <get-generatedAt>(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleModel.generatedAt.<get-generatedAt>|<get-generatedAt>(){}[0]
+    final val id // me.moiclathy.dism.schedule.model/DynamicScheduleModel.id|{}id[0]
+        final fun <get-id>(): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleModel.id.<get-id>|<get-id>(){}[0]
+    final val items // me.moiclathy.dism.schedule.model/DynamicScheduleModel.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.items.<get-items>|<get-items>(){}[0]
+    final val pendingItems // me.moiclathy.dism.schedule.model/DynamicScheduleModel.pendingItems|{}pendingItems[0]
+        final fun <get-pendingItems>(): kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.pendingItems.<get-pendingItems>|<get-pendingItems>(){}[0]
+    final val revision // me.moiclathy.dism.schedule.model/DynamicScheduleModel.revision|{}revision[0]
+        final fun <get-revision>(): kotlin/Long // me.moiclathy.dism.schedule.model/DynamicScheduleModel.revision.<get-revision>|<get-revision>(){}[0]
+    final val scheduledItems // me.moiclathy.dism.schedule.model/DynamicScheduleModel.scheduledItems|{}scheduledItems[0]
+        final fun <get-scheduledItems>(): kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.scheduledItems.<get-scheduledItems>|<get-scheduledItems>(){}[0]
+    final val size // me.moiclathy.dism.schedule.model/DynamicScheduleModel.size|{}size[0]
+        final fun <get-size>(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleModel.size.<get-size>|<get-size>(){}[0]
+
+    final fun component1(): me.moiclathy.dism.schedule.model/DynamicScheduleId // me.moiclathy.dism.schedule.model/DynamicScheduleModel.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.component2|component2(){}[0]
+    final fun component3(): kotlin.time/Instant? // me.moiclathy.dism.schedule.model/DynamicScheduleModel.component3|component3(){}[0]
+    final fun component4(): kotlin/Long // me.moiclathy.dism.schedule.model/DynamicScheduleModel.component4|component4(){}[0]
+    final fun copy(me.moiclathy.dism.schedule.model/DynamicScheduleId = ..., kotlin.collections/List<me.moiclathy.dism.schedule.model/DynamicScheduleItem> = ..., kotlin.time/Instant? = ..., kotlin/Long = ...): me.moiclathy.dism.schedule.model/DynamicScheduleModel // me.moiclathy.dism.schedule.model/DynamicScheduleModel.copy|copy(me.moiclathy.dism.schedule.model.DynamicScheduleId;kotlin.collections.List<me.moiclathy.dism.schedule.model.DynamicScheduleItem>;kotlin.time.Instant?;kotlin.Long){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // me.moiclathy.dism.schedule.model/DynamicScheduleModel.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // me.moiclathy.dism.schedule.model/DynamicScheduleModel.hashCode|hashCode(){}[0]
+    final fun item(me.moiclathy.dism.schedule.model/DynamicScheduleItemId): me.moiclathy.dism.schedule.model/DynamicScheduleItem? // me.moiclathy.dism.schedule.model/DynamicScheduleModel.item|item(me.moiclathy.dism.schedule.model.DynamicScheduleItemId){}[0]
+    final fun replaceItem(me.moiclathy.dism.schedule.model/DynamicScheduleItem): me.moiclathy.dism.schedule.model/DynamicScheduleModel // me.moiclathy.dism.schedule.model/DynamicScheduleModel.replaceItem|replaceItem(me.moiclathy.dism.schedule.model.DynamicScheduleItem){}[0]
+    final fun toString(): kotlin/String // me.moiclathy.dism.schedule.model/DynamicScheduleModel.toString|toString(){}[0]
+    final fun upsertItem(me.moiclathy.dism.schedule.model/DynamicScheduleItem): me.moiclathy.dism.schedule.model/DynamicScheduleModel // me.moiclathy.dism.schedule.model/DynamicScheduleModel.upsertItem|upsertItem(me.moiclathy.dism.schedule.model.DynamicScheduleItem){}[0]
+
+    final object $serializer : kotlinx.serialization.internal/GeneratedSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleModel> { // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer|null[0]
+        final val descriptor // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer.descriptor|{}descriptor[0]
+            final fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+        final fun childSerializers(): kotlin/Array<kotlinx.serialization/KSerializer<*>> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer.childSerializers|childSerializers(){}[0]
+        final fun deserialize(kotlinx.serialization.encoding/Decoder): me.moiclathy.dism.schedule.model/DynamicScheduleModel // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+        final fun serialize(kotlinx.serialization.encoding/Encoder, me.moiclathy.dism.schedule.model/DynamicScheduleModel) // me.moiclathy.dism.schedule.model/DynamicScheduleModel.$serializer.serialize|serialize(kotlinx.serialization.encoding.Encoder;me.moiclathy.dism.schedule.model.DynamicScheduleModel){}[0]
+    }
+
+    final object Companion { // me.moiclathy.dism.schedule.model/DynamicScheduleModel.Companion|null[0]
+        final val $childSerializers // me.moiclathy.dism.schedule.model/DynamicScheduleModel.Companion.$childSerializers|{}$childSerializers[0]
+
+        final fun serializer(): kotlinx.serialization/KSerializer<me.moiclathy.dism.schedule.model/DynamicScheduleModel> // me.moiclathy.dism.schedule.model/DynamicScheduleModel.Companion.serializer|serializer(){}[0]
+    }
+}
+
+final object me.moiclathy.dism.api/DismApiVersion { // me.moiclathy.dism.api/DismApiVersion|null[0]
+    final const val MAJOR // me.moiclathy.dism.api/DismApiVersion.MAJOR|{}MAJOR[0]
+        final fun <get-MAJOR>(): kotlin/Int // me.moiclathy.dism.api/DismApiVersion.MAJOR.<get-MAJOR>|<get-MAJOR>(){}[0]
+    final const val MINOR // me.moiclathy.dism.api/DismApiVersion.MINOR|{}MINOR[0]
+        final fun <get-MINOR>(): kotlin/Int // me.moiclathy.dism.api/DismApiVersion.MINOR.<get-MINOR>|<get-MINOR>(){}[0]
+    final const val PATCH // me.moiclathy.dism.api/DismApiVersion.PATCH|{}PATCH[0]
+        final fun <get-PATCH>(): kotlin/Int // me.moiclathy.dism.api/DismApiVersion.PATCH.<get-PATCH>|<get-PATCH>(){}[0]
+    final const val STRING // me.moiclathy.dism.api/DismApiVersion.STRING|{}STRING[0]
+        final fun <get-STRING>(): kotlin/String // me.moiclathy.dism.api/DismApiVersion.STRING.<get-STRING>|<get-STRING>(){}[0]
+}
+
+final object me.moiclathy.dism.api/DismFactory { // me.moiclathy.dism.api/DismFactory|null[0]
+    final fun create(): me.moiclathy.dism.api/Dism // me.moiclathy.dism.api/DismFactory.create|create(){}[0]
+    final fun create(me.moiclathy.dism.config/DismConfiguration): me.moiclathy.dism.api/Dism // me.moiclathy.dism.api/DismFactory.create|create(me.moiclathy.dism.config.DismConfiguration){}[0]
+}
+
+final object me.moiclathy.dism.api/DismFailureFormatter { // me.moiclathy.dism.api/DismFailureFormatter|null[0]
+    final fun format(me.moiclathy.dism.api/DismFailure): kotlin/String // me.moiclathy.dism.api/DismFailureFormatter.format|format(me.moiclathy.dism.api.DismFailure){}[0]
+}
+
+final object me.moiclathy.dism.config/DismConfigurationDefaults { // me.moiclathy.dism.config/DismConfigurationDefaults|null[0]
+    final val standard // me.moiclathy.dism.config/DismConfigurationDefaults.standard|{}standard[0]
+        final fun <get-standard>(): me.moiclathy.dism.config/DismConfiguration // me.moiclathy.dism.config/DismConfigurationDefaults.standard.<get-standard>|<get-standard>(){}[0]
+}
+
+final object me.moiclathy.dism.diagnostics/DismDiagnosticSinks { // me.moiclathy.dism.diagnostics/DismDiagnosticSinks|null[0]
+    final val none // me.moiclathy.dism.diagnostics/DismDiagnosticSinks.none|{}none[0]
+        final fun <get-none>(): me.moiclathy.dism.diagnostics/DismDiagnosticSink // me.moiclathy.dism.diagnostics/DismDiagnosticSinks.none.<get-none>|<get-none>(){}[0]
+
+    final fun inMemory(kotlin/Int = ...): me.moiclathy.dism.diagnostics/InMemoryDismDiagnosticSink // me.moiclathy.dism.diagnostics/DismDiagnosticSinks.inMemory|inMemory(kotlin.Int){}[0]
+}
+
+final object me.moiclathy.dism.schedule.api/DismScheduleImport { // me.moiclathy.dism.schedule.api/DismScheduleImport|null[0]
+    final fun fromIcs(kotlin/String, kotlin.time/Instant, kotlin/String = ...): me.moiclathy.dism.schedule.api/DismScheduleImportResult // me.moiclathy.dism.schedule.api/DismScheduleImport.fromIcs|fromIcs(kotlin.String;kotlin.time.Instant;kotlin.String){}[0]
+}
+
+// Targets: [js, wasmJs]
+final object me.moiclathy.dism.platform/WebDismFactory { // me.moiclathy.dism.platform/WebDismFactory|null[0]
+    final fun create(me.moiclathy.dism.config/DismConfiguration = ...): me.moiclathy.dism.api/Dism // me.moiclathy.dism.platform/WebDismFactory.create|create(me.moiclathy.dism.config.DismConfiguration){}[0]
+}

@@ -1,0 +1,4 @@
+package me.moiclathy.dism
+
+fun sayHello(to: String): String =
+    "Hello, $to!"

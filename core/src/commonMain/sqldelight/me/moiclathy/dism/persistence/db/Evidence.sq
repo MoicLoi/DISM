@@ -1,0 +1,25 @@
+CREATE TABLE evidence (
+    id TEXT NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL,
+    source TEXT NOT NULL,
+    observed_at TEXT NOT NULL,
+    confidence REAL NOT NULL
+);
+
+selectAll:
+SELECT * FROM evidence;
+
+selectById:
+SELECT * FROM evidence WHERE id = ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO evidence(
+    id,
+    type,
+    source,
+    observed_at,
+    confidence
+) VALUES (?, ?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM evidence;

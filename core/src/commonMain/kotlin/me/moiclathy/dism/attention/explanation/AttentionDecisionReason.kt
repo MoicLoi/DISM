@@ -1,0 +1,15 @@
+package me.moiclathy.dism.attention.explanation
+
+enum class AttentionDecisionReason {
+    HIGH_PRIORITY,
+    CRITICAL_PRIORITY,
+    ADAPTIVE_BOOST,
+    ADAPTIVE_SUPPRESSION,
+    BELOW_MINIMUM_PRIORITY,
+    SOFT_LIMIT_REACHED,
+    HARD_LIMIT_REACHED,
+    CONTEXT_SUPPRESSED,
+    NON_CRITICAL_SUPPRESSED,
+    SELECTED_BY_BUDGET,
+    DEFAULT
+}

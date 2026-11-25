@@ -1,0 +1,46 @@
+CREATE TABLE attention_event (
+    id TEXT NOT NULL PRIMARY KEY,
+    attention_key TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    occurred_at TEXT NOT NULL,
+    action TEXT,
+    feedback_action TEXT,
+    explanation_selected INTEGER,
+    explanation_base_priority REAL,
+    explanation_effective_priority REAL,
+    explanation_reasons TEXT,
+    explanation_summary TEXT,
+    metadata_payload TEXT NOT NULL DEFAULT ''
+);
+
+CREATE INDEX attention_event_key_time_idx
+ON attention_event(attention_key, occurred_at, id);
+
+insertEvent:
+INSERT OR IGNORE INTO attention_event(
+    id,
+    attention_key,
+    event_type,
+    occurred_at,
+    action,
+    feedback_action,
+    explanation_selected,
+    explanation_base_priority,
+    explanation_effective_priority,
+    explanation_reasons,
+    explanation_summary,
+    metadata_payload
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectForAttentionKey:
+SELECT * FROM attention_event
+WHERE attention_key = ?
+ORDER BY occurred_at ASC, id ASC;
+
+selectAllEvents:
+SELECT * FROM attention_event
+ORDER BY occurred_at ASC, id ASC;
+
+countById:
+SELECT count(*) FROM attention_event
+WHERE id = ?;

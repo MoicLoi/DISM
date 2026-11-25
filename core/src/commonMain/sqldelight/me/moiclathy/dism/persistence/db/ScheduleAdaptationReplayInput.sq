@@ -1,0 +1,30 @@
+CREATE TABLE schedule_adaptation_replay_input (
+    item_id TEXT NOT NULL PRIMARY KEY,
+    payload_json TEXT NOT NULL,
+    persisted_at_epoch_ms INTEGER NOT NULL,
+    schema_version INTEGER NOT NULL
+);
+
+CREATE INDEX schedule_adaptation_replay_input_persisted_idx
+ON schedule_adaptation_replay_input(persisted_at_epoch_ms);
+
+insertOrReplace:
+INSERT OR REPLACE INTO schedule_adaptation_replay_input(
+    item_id,
+    payload_json,
+    persisted_at_epoch_ms,
+    schema_version
+)
+VALUES (?, ?, ?, ?);
+
+selectByItemId:
+SELECT *
+FROM schedule_adaptation_replay_input
+WHERE item_id = ?;
+
+deleteByItemId:
+DELETE FROM schedule_adaptation_replay_input
+WHERE item_id = ?;
+
+deleteAll:
+DELETE FROM schedule_adaptation_replay_input;

@@ -1,0 +1,21 @@
+CREATE TABLE entity (
+    id TEXT NOT NULL PRIMARY KEY,
+    type TEXT NOT NULL,
+    name TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM entity;
+
+selectById:
+SELECT * FROM entity WHERE id = ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO entity(
+    id,
+    type,
+    name
+) VALUES (?, ?, ?);
+
+deleteAll:
+DELETE FROM entity;

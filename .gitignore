@@ -1,0 +1,25 @@
+*.iml
+.kotlin
+.gradle
+**/build/
+xcuserdata
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+node_modules/
+
+# 手工导出给外部分析用的源码副本，内容和仓库本身重复
+dist-source-for-agents/
+
+# 打包脚本的产物（发布用的 zip / apk 走 GitHub Release 附件，不进仓库）
+# build/ 已在上面被 **/build/ 覆盖

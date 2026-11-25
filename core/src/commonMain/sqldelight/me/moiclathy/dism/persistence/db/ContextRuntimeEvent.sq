@@ -1,0 +1,63 @@
+CREATE TABLE context_runtime_event (
+    id TEXT NOT NULL PRIMARY KEY,
+
+    event_type TEXT NOT NULL,
+
+    occurred_at TEXT NOT NULL,
+
+    mode TEXT,
+
+    previous_mode TEXT,
+
+    confidence REAL,
+
+    metadata_payload TEXT NOT NULL
+);
+
+CREATE INDEX context_runtime_event_occurred_at_index
+ON context_runtime_event(occurred_at, id);
+
+CREATE INDEX context_runtime_event_mode_index
+ON context_runtime_event(mode, occurred_at, id);
+
+insertEvent:
+INSERT OR IGNORE INTO context_runtime_event (
+    id,
+    event_type,
+    occurred_at,
+    mode,
+    previous_mode,
+    confidence,
+    metadata_payload
+)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectForMode:
+SELECT
+    id,
+    event_type,
+    occurred_at,
+    mode,
+    previous_mode,
+    confidence,
+    metadata_payload
+FROM context_runtime_event
+WHERE mode = ?
+ORDER BY occurred_at ASC, id ASC;
+
+selectAllEvents:
+SELECT
+    id,
+    event_type,
+    occurred_at,
+    mode,
+    previous_mode,
+    confidence,
+    metadata_payload
+FROM context_runtime_event
+ORDER BY occurred_at ASC, id ASC;
+
+countById:
+SELECT COUNT(*)
+FROM context_runtime_event
+WHERE id = ?;

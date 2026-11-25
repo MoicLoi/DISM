@@ -1,0 +1,62 @@
+CREATE TABLE external_schedule_sync_journal (
+    journal_id TEXT NOT NULL PRIMARY KEY,
+    schedule_id TEXT NOT NULL,
+    run_id TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    occurred_at_epoch_ms INTEGER NOT NULL,
+    external_key TEXT,
+    action TEXT,
+    event_id TEXT,
+    message TEXT
+);
+
+CREATE INDEX external_schedule_sync_journal_run_id_idx
+ON external_schedule_sync_journal(run_id);
+
+CREATE INDEX external_schedule_sync_journal_schedule_id_idx
+ON external_schedule_sync_journal(schedule_id);
+
+CREATE INDEX external_schedule_sync_journal_occurred_at_idx
+ON external_schedule_sync_journal(occurred_at_epoch_ms);
+
+insertOrIgnore:
+INSERT OR IGNORE INTO external_schedule_sync_journal(
+    journal_id,
+    schedule_id,
+    run_id,
+    event_type,
+    occurred_at_epoch_ms,
+    external_key,
+    action,
+    event_id,
+    message
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectByJournalId:
+SELECT *
+FROM external_schedule_sync_journal
+WHERE journal_id = ?;
+
+selectByRunId:
+SELECT *
+FROM external_schedule_sync_journal
+WHERE run_id = ?
+ORDER BY occurred_at_epoch_ms ASC, journal_id ASC;
+
+selectByScheduleId:
+SELECT *
+FROM external_schedule_sync_journal
+WHERE schedule_id = ?
+ORDER BY occurred_at_epoch_ms ASC, journal_id ASC;
+
+selectByScheduleAndRun:
+SELECT *
+FROM external_schedule_sync_journal
+WHERE schedule_id = ?
+  AND run_id = ?
+ORDER BY occurred_at_epoch_ms ASC, journal_id ASC;
+
+deleteByRunId:
+DELETE FROM external_schedule_sync_journal
+WHERE run_id = ?;

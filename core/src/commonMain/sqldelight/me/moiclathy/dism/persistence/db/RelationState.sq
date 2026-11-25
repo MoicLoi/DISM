@@ -1,0 +1,46 @@
+CREATE TABLE relation_state (
+    subject_id TEXT NOT NULL,
+    predicate TEXT NOT NULL,
+    object_id TEXT NOT NULL,
+
+    confidence REAL NOT NULL,
+
+    valid_from TEXT NOT NULL,
+    valid_until TEXT,
+
+    status TEXT NOT NULL,
+
+    PRIMARY KEY (
+        subject_id,
+        predicate,
+        object_id,
+        valid_from
+    )
+);
+
+selectAll:
+SELECT * FROM relation_state ORDER BY valid_from ASC;
+
+selectActiveAt:
+SELECT * FROM relation_state
+WHERE valid_from <= ?
+  AND (
+      valid_until IS NULL
+      OR valid_until > ?
+  )
+  AND status = 'ACTIVE'
+ORDER BY valid_from ASC;
+
+deleteAll:
+DELETE FROM relation_state;
+
+insert:
+INSERT INTO relation_state(
+    subject_id,
+    predicate,
+    object_id,
+    confidence,
+    valid_from,
+    valid_until,
+    status
+) VALUES (?, ?, ?, ?, ?, ?, ?);

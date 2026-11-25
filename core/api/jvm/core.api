@@ -1,0 +1,928 @@
+public abstract interface class me/moiclathy/dism/api/Dism {
+	public abstract fun getApiVersion ()Ljava/lang/String;
+	public abstract fun getCapabilities ()Lme/moiclathy/dism/api/DismCapabilities;
+	public abstract fun getRuntime ()Lme/moiclathy/dism/runtime/DismRuntimeApi;
+}
+
+public final class me/moiclathy/dism/api/DismApiVersion {
+	public static final field INSTANCE Lme/moiclathy/dism/api/DismApiVersion;
+	public static final field MAJOR I
+	public static final field MINOR I
+	public static final field PATCH I
+	public static final field STRING Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/api/DismCapabilities {
+	public fun <init> ()V
+	public fun <init> (ZZZZZZZZ)V
+	public synthetic fun <init> (ZZZZZZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public final fun component8 ()Z
+	public final fun copy (ZZZZZZZZ)Lme/moiclathy/dism/api/DismCapabilities;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/api/DismCapabilities;ZZZZZZZZILjava/lang/Object;)Lme/moiclathy/dism/api/DismCapabilities;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdaptation ()Z
+	public final fun getAttention ()Z
+	public final fun getDynamicSchedule ()Z
+	public final fun getLocalFirst ()Z
+	public final fun getPersistence ()Z
+	public final fun getReplay ()Z
+	public final fun getSemanticState ()Z
+	public final fun getVerification ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/api/DismException : java/lang/IllegalStateException {
+	public fun <init> (Lme/moiclathy/dism/api/DismFailure;)V
+	public final fun getFailure ()Lme/moiclathy/dism/api/DismFailure;
+}
+
+public final class me/moiclathy/dism/api/DismFactory {
+	public static final field INSTANCE Lme/moiclathy/dism/api/DismFactory;
+	public final fun create ()Lme/moiclathy/dism/api/Dism;
+	public final fun create (Lme/moiclathy/dism/config/DismConfiguration;)Lme/moiclathy/dism/api/Dism;
+}
+
+public final class me/moiclathy/dism/api/DismFailure {
+	public fun <init> (Lme/moiclathy/dism/api/DismFailureCode;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/api/DismFailureCode;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/api/DismFailureCode;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun copy (Lme/moiclathy/dism/api/DismFailureCode;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lme/moiclathy/dism/api/DismFailure;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/api/DismFailure;Lme/moiclathy/dism/api/DismFailureCode;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/api/DismFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Lme/moiclathy/dism/api/DismFailureCode;
+	public final fun getDetails ()Ljava/util/Map;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getOperation ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/api/DismFailureCode : java/lang/Enum {
+	public static final field INTERNAL_FAILURE Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field INVALID_CONFIGURATION Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field INVALID_INPUT Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field INVALID_STATE Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field OPERATION_REJECTED Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field REPLAY_UNAVAILABLE Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field STORAGE_FAILURE Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field STORAGE_UNAVAILABLE Lme/moiclathy/dism/api/DismFailureCode;
+	public static final field UNSUPPORTED_CAPABILITY Lme/moiclathy/dism/api/DismFailureCode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/api/DismFailureCode;
+	public static fun values ()[Lme/moiclathy/dism/api/DismFailureCode;
+}
+
+public final class me/moiclathy/dism/api/DismFailureFormatter {
+	public static final field INSTANCE Lme/moiclathy/dism/api/DismFailureFormatter;
+	public final fun format (Lme/moiclathy/dism/api/DismFailure;)Ljava/lang/String;
+}
+
+public abstract interface annotation class me/moiclathy/dism/api/DismInternalApi : java/lang/annotation/Annotation {
+}
+
+public abstract interface class me/moiclathy/dism/api/DismOperationResult {
+}
+
+public final class me/moiclathy/dism/api/DismOperationResult$Failure : me/moiclathy/dism/api/DismOperationResult {
+	public fun <init> (Lme/moiclathy/dism/api/DismFailure;)V
+	public final fun component1 ()Lme/moiclathy/dism/api/DismFailure;
+	public final fun copy (Lme/moiclathy/dism/api/DismFailure;)Lme/moiclathy/dism/api/DismOperationResult$Failure;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/api/DismOperationResult$Failure;Lme/moiclathy/dism/api/DismFailure;ILjava/lang/Object;)Lme/moiclathy/dism/api/DismOperationResult$Failure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lme/moiclathy/dism/api/DismFailure;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/api/DismOperationResult$Success : me/moiclathy/dism/api/DismOperationResult {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lme/moiclathy/dism/api/DismOperationResult$Success;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/api/DismOperationResult$Success;Ljava/lang/Object;ILjava/lang/Object;)Lme/moiclathy/dism/api/DismOperationResult$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface annotation class me/moiclathy/dism/api/DismPublicApi : java/lang/annotation/Annotation {
+}
+
+public final class me/moiclathy/dism/config/DismConfiguration {
+	public fun <init> ()V
+	public fun <init> (Lme/moiclathy/dism/config/DismStorageConfiguration;Lme/moiclathy/dism/config/DismRuntimeConfiguration;Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/config/DismStorageConfiguration;Lme/moiclathy/dism/config/DismRuntimeConfiguration;Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/config/DismStorageConfiguration;
+	public final fun component2 ()Lme/moiclathy/dism/config/DismRuntimeConfiguration;
+	public final fun component3 ()Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;
+	public final fun copy (Lme/moiclathy/dism/config/DismStorageConfiguration;Lme/moiclathy/dism/config/DismRuntimeConfiguration;Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;)Lme/moiclathy/dism/config/DismConfiguration;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/config/DismConfiguration;Lme/moiclathy/dism/config/DismStorageConfiguration;Lme/moiclathy/dism/config/DismRuntimeConfiguration;Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;ILjava/lang/Object;)Lme/moiclathy/dism/config/DismConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDiagnostics ()Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;
+	public final fun getRuntime ()Lme/moiclathy/dism/config/DismRuntimeConfiguration;
+	public final fun getStorage ()Lme/moiclathy/dism/config/DismStorageConfiguration;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/config/DismConfigurationDefaults {
+	public static final field INSTANCE Lme/moiclathy/dism/config/DismConfigurationDefaults;
+	public final fun getStandard ()Lme/moiclathy/dism/config/DismConfiguration;
+}
+
+public final class me/moiclathy/dism/config/DismRuntimeConfiguration {
+	public fun <init> ()V
+	public fun <init> (ZZZ)V
+	public synthetic fun <init> (ZZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Z
+	public final fun component3 ()Z
+	public final fun copy (ZZZ)Lme/moiclathy/dism/config/DismRuntimeConfiguration;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/config/DismRuntimeConfiguration;ZZZILjava/lang/Object;)Lme/moiclathy/dism/config/DismRuntimeConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnableAdaptation ()Z
+	public final fun getEnableAttention ()Z
+	public final fun getEnableDynamicSchedule ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/config/DismStorageConfiguration {
+	public fun <init> ()V
+	public fun <init> (Lme/moiclathy/dism/config/DismStorageMode;Ljava/lang/String;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/config/DismStorageMode;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/config/DismStorageMode;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Lme/moiclathy/dism/config/DismStorageMode;Ljava/lang/String;)Lme/moiclathy/dism/config/DismStorageConfiguration;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/config/DismStorageConfiguration;Lme/moiclathy/dism/config/DismStorageMode;Ljava/lang/String;ILjava/lang/Object;)Lme/moiclathy/dism/config/DismStorageConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDatabaseName ()Ljava/lang/String;
+	public final fun getMode ()Lme/moiclathy/dism/config/DismStorageMode;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/config/DismStorageMode : java/lang/Enum {
+	public static final field IN_MEMORY Lme/moiclathy/dism/config/DismStorageMode;
+	public static final field LOCAL Lme/moiclathy/dism/config/DismStorageMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/config/DismStorageMode;
+	public static fun values ()[Lme/moiclathy/dism/config/DismStorageMode;
+}
+
+public final class me/moiclathy/dism/diagnostics/DismDiagnosticEvent {
+	public fun <init> (Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Lkotlin/time/Instant;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/util/Map;
+	public final fun copy (Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lme/moiclathy/dism/diagnostics/DismDiagnosticEvent;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/diagnostics/DismDiagnosticEvent;Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/diagnostics/DismDiagnosticEvent;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/Map;
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getComponent ()Ljava/lang/String;
+	public final fun getLevel ()Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getOperation ()Ljava/lang/String;
+	public final fun getTimestamp ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/diagnostics/DismDiagnosticLevel : java/lang/Enum {
+	public static final field DEBUG Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public static final field ERROR Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public static final field INFO Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public static final field WARN Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+	public static fun values ()[Lme/moiclathy/dism/diagnostics/DismDiagnosticLevel;
+}
+
+public abstract interface class me/moiclathy/dism/diagnostics/DismDiagnosticSink {
+	public abstract fun emit (Lme/moiclathy/dism/diagnostics/DismDiagnosticEvent;)V
+}
+
+public final class me/moiclathy/dism/diagnostics/DismDiagnosticSinks {
+	public static final field INSTANCE Lme/moiclathy/dism/diagnostics/DismDiagnosticSinks;
+	public final fun getNone ()Lme/moiclathy/dism/diagnostics/DismDiagnosticSink;
+	public final fun inMemory (I)Lme/moiclathy/dism/diagnostics/InMemoryDismDiagnosticSink;
+	public static synthetic fun inMemory$default (Lme/moiclathy/dism/diagnostics/DismDiagnosticSinks;IILjava/lang/Object;)Lme/moiclathy/dism/diagnostics/InMemoryDismDiagnosticSink;
+}
+
+public final class me/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration {
+	public fun <init> ()V
+	public fun <init> (ZLme/moiclathy/dism/diagnostics/DismDiagnosticSink;)V
+	public synthetic fun <init> (ZLme/moiclathy/dism/diagnostics/DismDiagnosticSink;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Lme/moiclathy/dism/diagnostics/DismDiagnosticSink;
+	public final fun copy (ZLme/moiclathy/dism/diagnostics/DismDiagnosticSink;)Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;ZLme/moiclathy/dism/diagnostics/DismDiagnosticSink;ILjava/lang/Object;)Lme/moiclathy/dism/diagnostics/DismDiagnosticsConfiguration;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEnabled ()Z
+	public final fun getSink ()Lme/moiclathy/dism/diagnostics/DismDiagnosticSink;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/diagnostics/InMemoryDismDiagnosticSink : me/moiclathy/dism/diagnostics/DismDiagnosticSink {
+	public fun <init> ()V
+	public fun <init> (I)V
+	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun clear ()V
+	public fun emit (Lme/moiclathy/dism/diagnostics/DismDiagnosticEvent;)V
+	public final fun snapshot ()Ljava/util/List;
+}
+
+public final class me/moiclathy/dism/example/DismApplicationExample {
+	public fun <init> (Lme/moiclathy/dism/api/Dism;)V
+	public final fun getApiVersion ()Ljava/lang/String;
+	public final fun getCapabilities ()Lme/moiclathy/dism/api/DismCapabilities;
+	public final fun getRuntime ()Lme/moiclathy/dism/runtime/DismRuntimeApi;
+	public final fun start ()Lme/moiclathy/dism/example/DismApplicationSnapshot;
+}
+
+public final class me/moiclathy/dism/example/DismApplicationSnapshot {
+	public fun <init> (Ljava/lang/String;Lme/moiclathy/dism/runtime/RuntimeSnapshot;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lme/moiclathy/dism/runtime/RuntimeSnapshot;
+	public final fun copy (Ljava/lang/String;Lme/moiclathy/dism/runtime/RuntimeSnapshot;)Lme/moiclathy/dism/example/DismApplicationSnapshot;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/example/DismApplicationSnapshot;Ljava/lang/String;Lme/moiclathy/dism/runtime/RuntimeSnapshot;ILjava/lang/Object;)Lme/moiclathy/dism/example/DismApplicationSnapshot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveRelationCount ()I
+	public final fun getApiVersion ()Ljava/lang/String;
+	public final fun getSnapshot ()Lme/moiclathy/dism/runtime/RuntimeSnapshot;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/platform/DismPlatform : java/lang/Enum {
+	public static final field ANDROID Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field JS Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field JVM Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field NATIVE Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field SERVER Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field UNKNOWN Lme/moiclathy/dism/platform/DismPlatform;
+	public static final field WASM Lme/moiclathy/dism/platform/DismPlatform;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/platform/DismPlatform;
+	public static fun values ()[Lme/moiclathy/dism/platform/DismPlatform;
+}
+
+public final class me/moiclathy/dism/platform/DismPlatformCapability : java/lang/Enum {
+	public static final field BACKGROUND_EXECUTION Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static final field FILE_SYSTEM Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static final field LOCAL_STORAGE Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static final field NETWORK Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static final field NOTIFICATIONS Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static final field SECURE_STORAGE Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/platform/DismPlatformCapability;
+	public static fun values ()[Lme/moiclathy/dism/platform/DismPlatformCapability;
+}
+
+public abstract interface class me/moiclathy/dism/platform/DismPlatformEntryPoint {
+	public abstract fun create (Lme/moiclathy/dism/config/DismConfiguration;)Lme/moiclathy/dism/api/Dism;
+	public abstract fun getPlatform ()Lme/moiclathy/dism/platform/DismPlatformInfo;
+}
+
+public final class me/moiclathy/dism/platform/DismPlatformInfo {
+	public fun <init> (Lme/moiclathy/dism/platform/DismPlatform;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/platform/DismPlatform;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/platform/DismPlatform;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/Set;
+	public final fun copy (Lme/moiclathy/dism/platform/DismPlatform;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;)Lme/moiclathy/dism/platform/DismPlatformInfo;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/platform/DismPlatformInfo;Lme/moiclathy/dism/platform/DismPlatform;Ljava/lang/String;Ljava/lang/String;Ljava/util/Set;ILjava/lang/Object;)Lme/moiclathy/dism/platform/DismPlatformInfo;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCapabilities ()Ljava/util/Set;
+	public final fun getPlatform ()Lme/moiclathy/dism/platform/DismPlatform;
+	public final fun getRuntimeName ()Ljava/lang/String;
+	public final fun getRuntimeVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun supports (Lme/moiclathy/dism/platform/DismPlatformCapability;)Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/platform/JvmDismFactory {
+	public static final field INSTANCE Lme/moiclathy/dism/platform/JvmDismFactory;
+	public final fun create (Ljava/io/File;Lme/moiclathy/dism/config/DismConfiguration;)Lme/moiclathy/dism/api/Dism;
+	public static synthetic fun create$default (Lme/moiclathy/dism/platform/JvmDismFactory;Ljava/io/File;Lme/moiclathy/dism/config/DismConfiguration;ILjava/lang/Object;)Lme/moiclathy/dism/api/Dism;
+}
+
+public abstract interface class me/moiclathy/dism/provider/DismProvider {
+	public abstract fun getCapabilities ()Ljava/util/Set;
+	public abstract fun getId ()Ljava/lang/String;
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun getVersion ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/provider/DismProviderCapability : java/lang/Enum {
+	public static final field NATURAL_LANGUAGE Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static final field READ Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static final field SEMANTIC_EXTRACTION Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static final field STREAM Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static final field SYNC Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static final field WRITE Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/provider/DismProviderCapability;
+	public static fun values ()[Lme/moiclathy/dism/provider/DismProviderCapability;
+}
+
+public final class me/moiclathy/dism/provider/DismProviderContext {
+	public fun <init> (Lkotlin/time/Instant;Ljava/util/Map;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Lkotlin/time/Instant;Ljava/util/Map;)Lme/moiclathy/dism/provider/DismProviderContext;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/provider/DismProviderContext;Lkotlin/time/Instant;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/provider/DismProviderContext;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttributes ()Ljava/util/Map;
+	public final fun getRequestedAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/provider/DismProviderObservation {
+	public fun <init> (Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/util/Map;)Lme/moiclathy/dism/provider/DismProviderObservation;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/provider/DismProviderObservation;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/provider/DismProviderObservation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExternalKey ()Ljava/lang/String;
+	public final fun getObservedAt ()Lkotlin/time/Instant;
+	public final fun getPayload ()Ljava/util/Map;
+	public final fun getProviderId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class me/moiclathy/dism/provider/DismProviderRegistry {
+	public abstract fun all ()Ljava/util/List;
+	public abstract fun find (Ljava/lang/String;)Lme/moiclathy/dism/provider/DismProvider;
+	public abstract fun register (Lme/moiclathy/dism/provider/DismProvider;)V
+	public abstract fun unregister (Ljava/lang/String;)V
+}
+
+public abstract interface class me/moiclathy/dism/provider/DismProviderResult {
+}
+
+public final class me/moiclathy/dism/provider/DismProviderResult$Failure : me/moiclathy/dism/provider/DismProviderResult {
+	public fun <init> (Lme/moiclathy/dism/api/DismFailure;)V
+	public final fun component1 ()Lme/moiclathy/dism/api/DismFailure;
+	public final fun copy (Lme/moiclathy/dism/api/DismFailure;)Lme/moiclathy/dism/provider/DismProviderResult$Failure;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/provider/DismProviderResult$Failure;Lme/moiclathy/dism/api/DismFailure;ILjava/lang/Object;)Lme/moiclathy/dism/provider/DismProviderResult$Failure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lme/moiclathy/dism/api/DismFailure;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/provider/DismProviderResult$Success : me/moiclathy/dism/provider/DismProviderResult {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lme/moiclathy/dism/provider/DismProviderResult$Success;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/provider/DismProviderResult$Success;Ljava/lang/Object;ILjava/lang/Object;)Lme/moiclathy/dism/provider/DismProviderResult$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class me/moiclathy/dism/runtime/DismRuntimeApi {
+	public abstract fun currentStates ()Ljava/util/List;
+	public abstract fun dynamicSchedule (Ljava/util/Map;)Lme/moiclathy/dism/schedule/api/DynamicScheduleFacade;
+	public static synthetic fun dynamicSchedule$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleFacade;
+	public abstract fun observe (Lme/moiclathy/dism/semantic/observation/SemanticObservationDraft;Lme/moiclathy/dism/context/Context;)Lme/moiclathy/dism/semantic/engine/ObserveResult;
+	public abstract fun observeAndEvaluate (Lme/moiclathy/dism/semantic/observation/SemanticObservationDraft;Lme/moiclathy/dism/context/Context;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/attention/AttentionPolicy;)Lme/moiclathy/dism/semantic/engine/ReactiveEvaluationResult;
+	public static synthetic fun observeAndEvaluate$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Lme/moiclathy/dism/semantic/observation/SemanticObservationDraft;Lme/moiclathy/dism/context/Context;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/attention/AttentionPolicy;ILjava/lang/Object;)Lme/moiclathy/dism/semantic/engine/ReactiveEvaluationResult;
+	public abstract fun queryAt (Lkotlin/time/Instant;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/domain/relation/Predicate;Lkotlin/uuid/Uuid;D)Ljava/util/List;
+	public static synthetic fun queryAt$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Lkotlin/time/Instant;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/domain/relation/Predicate;Lkotlin/uuid/Uuid;DILjava/lang/Object;)Ljava/util/List;
+	public abstract fun snapshot ()Lme/moiclathy/dism/runtime/RuntimeSnapshot;
+}
+
+public final class me/moiclathy/dism/runtime/DismRuntimeApi$DefaultImpls {
+	public static synthetic fun dynamicSchedule$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Ljava/util/Map;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleFacade;
+	public static synthetic fun observeAndEvaluate$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Lme/moiclathy/dism/semantic/observation/SemanticObservationDraft;Lme/moiclathy/dism/context/Context;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/attention/AttentionPolicy;ILjava/lang/Object;)Lme/moiclathy/dism/semantic/engine/ReactiveEvaluationResult;
+	public static synthetic fun queryAt$default (Lme/moiclathy/dism/runtime/DismRuntimeApi;Lkotlin/time/Instant;Lkotlin/uuid/Uuid;Lme/moiclathy/dism/domain/relation/Predicate;Lkotlin/uuid/Uuid;DILjava/lang/Object;)Ljava/util/List;
+}
+
+public final class me/moiclathy/dism/runtime/RuntimeSnapshot {
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lme/moiclathy/dism/runtime/RuntimeSnapshot;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/runtime/RuntimeSnapshot;Ljava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lme/moiclathy/dism/runtime/RuntimeSnapshot;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEntities ()Ljava/util/List;
+	public final fun getEvidence ()Ljava/util/List;
+	public final fun getRelationStates ()Ljava/util/List;
+	public final fun getTransitions ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/api/DismScheduleImport {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/api/DismScheduleImport;
+	public final fun fromIcs (Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;)Lme/moiclathy/dism/schedule/api/DismScheduleImportResult;
+	public static synthetic fun fromIcs$default (Lme/moiclathy/dism/schedule/api/DismScheduleImport;Ljava/lang/String;Lkotlin/time/Instant;Ljava/lang/String;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DismScheduleImportResult;
+}
+
+public final class me/moiclathy/dism/schedule/api/DismScheduleImportResult {
+	public fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Ljava/util/List;Ljava/util/List;)Lme/moiclathy/dism/schedule/api/DismScheduleImportResult;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DismScheduleImportResult;Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DismScheduleImportResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrors ()Ljava/util/List;
+	public final fun getHasPartialFailures ()Z
+	public final fun getModel ()Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public final fun getSuccess ()Z
+	public final fun getWarnings ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleDecisionView {
+	public fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Ljava/lang/String;DLjava/lang/Boolean;Ljava/lang/String;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Ljava/lang/String;DLjava/lang/Boolean;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()D
+	public final fun component4 ()Ljava/lang/Boolean;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Ljava/lang/String;DLjava/lang/Boolean;Ljava/lang/String;)Lme/moiclathy/dism/schedule/api/DynamicScheduleDecisionView;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleDecisionView;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Ljava/lang/String;DLjava/lang/Boolean;Ljava/lang/String;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleDecisionView;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttentionRequired ()Ljava/lang/Boolean;
+	public final fun getExplanation ()Ljava/lang/String;
+	public final fun getItemId ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun getPriority ()D
+	public final fun getTitle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleEvaluation {
+	public fun <init> (Lkotlin/time/Instant;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Lkotlin/time/Instant;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Lkotlin/time/Instant;Ljava/util/List;Ljava/util/List;)Lme/moiclathy/dism/schedule/api/DynamicScheduleEvaluation;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleEvaluation;Lkotlin/time/Instant;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleEvaluation;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAttentionRequiredCount ()I
+	public final fun getDecisions ()Ljava/util/List;
+	public final fun getDiagnostics ()Ljava/util/List;
+	public final fun getEvaluatedAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class me/moiclathy/dism/schedule/api/DynamicScheduleFacade {
+	public abstract fun evaluate (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Lkotlin/time/Instant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getHistory ()Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryFacade;
+	public abstract fun latestDecision (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun latestDecisions (Ljava/util/Collection;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun preview (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Lkotlin/time/Instant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleHistoryEntry {
+	public fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lkotlin/time/Instant;JLjava/lang/String;Z)V
+	public final fun component1 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Z
+	public final fun copy (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lkotlin/time/Instant;JLjava/lang/String;Z)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryEntry;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryEntry;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lkotlin/time/Instant;JLjava/lang/String;ZILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCapturedAt ()Lkotlin/time/Instant;
+	public final fun getEngineVersion ()Ljava/lang/String;
+	public final fun getHasTrace ()Z
+	public final fun getItemId ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun getScheduleRevision ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class me/moiclathy/dism/schedule/api/DynamicScheduleHistoryFacade {
+	public abstract fun latest (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun query (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun query$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryFacade;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleHistoryFacade$DefaultImpls {
+	public static synthetic fun query$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryFacade;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery {
+	public fun <init> ()V
+	public fun <init> (I)V
+	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun copy (I)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;IILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryQuery;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLimit ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/api/DynamicScheduleHistoryResult {
+	public fun <init> (Ljava/util/List;ZI)V
+	public synthetic fun <init> (Ljava/util/List;ZIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Z
+	public final fun component3 ()I
+	public final fun copy (Ljava/util/List;ZI)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryResult;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryResult;Ljava/util/List;ZIILjava/lang/Object;)Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEntries ()Ljava/util/List;
+	public final fun getLatest ()Lme/moiclathy/dism/schedule/api/DynamicScheduleHistoryEntry;
+	public final fun getTotalMatched ()I
+	public final fun getTruncated ()Z
+	public fun hashCode ()I
+	public final fun isEmpty ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleId {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleId$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/lang/String;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleId$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleIntelligencePolicy {
+	public fun <init> ()V
+	public fun <init> (DDDDDD)V
+	public synthetic fun <init> (DDDDDDILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun clampConfidence (D)D
+	public final fun clampPriority (D)D
+	public final fun component1 ()D
+	public final fun component2 ()D
+	public final fun component3 ()D
+	public final fun component4 ()D
+	public final fun component5 ()D
+	public final fun component6 ()D
+	public final fun copy (DDDDDD)Lme/moiclathy/dism/schedule/model/DynamicScheduleIntelligencePolicy;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleIntelligencePolicy;DDDDDDILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleIntelligencePolicy;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDefaultConfidence ()D
+	public final fun getDefaultPriority ()D
+	public final fun getMaximumConfidence ()D
+	public final fun getMaximumPriority ()D
+	public final fun getMinimumConfidence ()D
+	public final fun getMinimumPriority ()D
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleItem {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleItem$Companion;
+	public fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/lang/String;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;Lme/moiclathy/dism/schedule/model/DynamicScheduleState;DDLjava/lang/String;Lkotlin/time/Instant;Lkotlin/time/Instant;)V
+	public synthetic fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/lang/String;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;Lme/moiclathy/dism/schedule/model/DynamicScheduleState;DDLjava/lang/String;Lkotlin/time/Instant;Lkotlin/time/Instant;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Lkotlin/time/Instant;
+	public final fun component12 ()Lkotlin/time/Instant;
+	public final fun component2 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public final fun component5 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public final fun component6 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;
+	public final fun component7 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public final fun component8 ()D
+	public final fun component9 ()D
+	public final fun copy (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/lang/String;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;Lme/moiclathy/dism/schedule/model/DynamicScheduleState;DDLjava/lang/String;Lkotlin/time/Instant;Lkotlin/time/Instant;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/lang/String;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;Lme/moiclathy/dism/schedule/model/DynamicScheduleState;DDLjava/lang/String;Lkotlin/time/Instant;Lkotlin/time/Instant;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConfidence ()D
+	public final fun getCreatedAt ()Lkotlin/time/Instant;
+	public final fun getExternalKey ()Ljava/lang/String;
+	public final fun getId ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun getPriority ()D
+	public final fun getScheduleId ()Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public final fun getSource ()Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public final fun getState ()Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public final fun getTemporal ()Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public final fun getUpdatedAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public final fun isActive ()Z
+	public final fun isScheduled ()Z
+	public final fun isTerminal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleItem$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleItem$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleItem$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleItemId {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId$Companion;
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;Ljava/lang/String;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getValue ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleItemId$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleItemId$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleItemType : java/lang/Enum {
+	public static final field APPOINTMENT Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static final field EVENT Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static final field OTHER Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static final field REMINDER Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static final field ROUTINE Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static final field TASK Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+	public static fun values ()[Lme/moiclathy/dism/schedule/model/DynamicScheduleItemType;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleModel {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleModel$Companion;
+	public fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/util/List;Lkotlin/time/Instant;J)V
+	public synthetic fun <init> (Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/util/List;Lkotlin/time/Instant;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Lkotlin/time/Instant;
+	public final fun component4 ()J
+	public final fun copy (Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/util/List;Lkotlin/time/Instant;J)Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;Lme/moiclathy/dism/schedule/model/DynamicScheduleId;Ljava/util/List;Lkotlin/time/Instant;JILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveItems ()Ljava/util/List;
+	public final fun getGeneratedAt ()Lkotlin/time/Instant;
+	public final fun getId ()Lme/moiclathy/dism/schedule/model/DynamicScheduleId;
+	public final fun getItems ()Ljava/util/List;
+	public final fun getPendingItems ()Ljava/util/List;
+	public final fun getRevision ()J
+	public final fun getScheduledItems ()Ljava/util/List;
+	public final fun getSize ()I
+	public fun hashCode ()I
+	public final fun item (Lme/moiclathy/dism/schedule/model/DynamicScheduleItemId;)Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;
+	public final fun replaceItem (Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;)Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public fun toString ()Ljava/lang/String;
+	public final fun upsertItem (Lme/moiclathy/dism/schedule/model/DynamicScheduleItem;)Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleModel$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleModel$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleModel;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleModel$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleSource : java/lang/Enum {
+	public static final field DERIVED Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public static final field EXTERNAL Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public static final field SYSTEM Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public static final field USER_INPUT Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+	public static fun values ()[Lme/moiclathy/dism/schedule/model/DynamicScheduleSource;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleState : java/lang/Enum {
+	public static final field ACTIVE Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field BLOCKED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field CANCELLED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field COMPLETED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field EXPIRED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field POSTPONED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field READY Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field UNSCHEDULED Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static final field UPCOMING Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+	public static fun values ()[Lme/moiclathy/dism/schedule/model/DynamicScheduleState;
+}
+
+public abstract interface class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Companion;
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At : me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At$Companion;
+	public fun <init> (Lkotlin/time/Instant;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun copy (Lkotlin/time/Instant;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At;Lkotlin/time/Instant;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$At$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline : me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline$Companion;
+	public fun <init> (Lkotlin/time/Instant;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun copy (Lkotlin/time/Instant;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline;Lkotlin/time/Instant;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDeadline ()Lkotlin/time/Instant;
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Deadline$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$DefaultImpls {
+	public static fun getEndAt (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;)Lkotlin/time/Instant;
+	public static fun getStartAt (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal;)Lkotlin/time/Instant;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval : me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval$Companion;
+	public fun <init> (Lkotlin/time/Instant;Lkotlin/time/Instant;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun copy (Lkotlin/time/Instant;Lkotlin/time/Instant;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval;Lkotlin/time/Instant;Lkotlin/time/Instant;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Interval$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Unscheduled : me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Unscheduled;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window : me/moiclathy/dism/schedule/model/DynamicScheduleTemporal {
+	public static final field Companion Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window$Companion;
+	public fun <init> (Lkotlin/time/Instant;Lkotlin/time/Instant;)V
+	public final fun component1 ()Lkotlin/time/Instant;
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun copy (Lkotlin/time/Instant;Lkotlin/time/Instant;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window;
+	public static synthetic fun copy$default (Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window;Lkotlin/time/Instant;Lkotlin/time/Instant;ILjava/lang/Object;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEarliestStart ()Lkotlin/time/Instant;
+	public fun getEndAt ()Lkotlin/time/Instant;
+	public final fun getLatestStart ()Lkotlin/time/Instant;
+	public fun getStartAt ()Lkotlin/time/Instant;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lme/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class me/moiclathy/dism/schedule/model/DynamicScheduleTemporal$Window$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

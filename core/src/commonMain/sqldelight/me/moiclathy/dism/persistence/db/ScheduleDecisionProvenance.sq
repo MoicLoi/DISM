@@ -1,0 +1,104 @@
+CREATE TABLE schedule_decision_provenance (
+    provenance_id TEXT NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    snapshot_id TEXT NOT NULL,
+    trace_id TEXT,
+    replay_input_snapshot_id TEXT,
+    historical_engine_version TEXT NOT NULL,
+    replay_engine_version TEXT,
+    compatibility TEXT NOT NULL,
+    migration_id TEXT,
+    created_at_epoch_ms INTEGER NOT NULL,
+    replayed_at_epoch_ms INTEGER,
+    behavior_fingerprint TEXT,
+    verified_at_epoch_ms INTEGER,
+    verification_status TEXT,
+    verification_historical_engine_version TEXT,
+    verification_engine_version TEXT,
+    difference_count INTEGER,
+    diagnostics_json TEXT
+);
+
+CREATE INDEX schedule_decision_provenance_snapshot_idx
+ON schedule_decision_provenance(snapshot_id);
+
+CREATE INDEX schedule_decision_provenance_item_idx
+ON schedule_decision_provenance(item_id);
+
+CREATE INDEX schedule_decision_provenance_created_idx
+ON schedule_decision_provenance(created_at_epoch_ms);
+
+insertOrReplace:
+INSERT OR REPLACE INTO schedule_decision_provenance(
+    provenance_id,
+    item_id,
+    snapshot_id,
+    trace_id,
+    replay_input_snapshot_id,
+    historical_engine_version,
+    replay_engine_version,
+    compatibility,
+    migration_id,
+    created_at_epoch_ms,
+    replayed_at_epoch_ms,
+    behavior_fingerprint,
+    verified_at_epoch_ms,
+    verification_status,
+    verification_historical_engine_version,
+    verification_engine_version,
+    difference_count,
+    diagnostics_json
+)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+selectById:
+SELECT *
+FROM schedule_decision_provenance
+WHERE provenance_id = ?;
+
+selectLatestForSnapshot:
+SELECT *
+FROM schedule_decision_provenance
+WHERE snapshot_id = ?
+ORDER BY created_at_epoch_ms DESC, provenance_id DESC
+LIMIT 1;
+
+selectForSnapshot:
+SELECT *
+FROM schedule_decision_provenance
+WHERE snapshot_id = ?
+ORDER BY created_at_epoch_ms DESC, provenance_id DESC;
+
+selectAll:
+SELECT *
+FROM schedule_decision_provenance
+ORDER BY created_at_epoch_ms ASC, provenance_id ASC;
+
+selectForItem:
+SELECT *
+FROM schedule_decision_provenance
+WHERE item_id = ?
+ORDER BY created_at_epoch_ms ASC, provenance_id ASC;
+
+/**
+ * 13.16：校验事实必须整体回填。
+ *
+ * `verifiedAt` / 状态 / 版本 / 差异数 / 诊断是一组，
+ * 分行更新会出现"状态写了但时间没写"的中间态。
+ */
+updateVerification:
+UPDATE schedule_decision_provenance
+SET verified_at_epoch_ms = ?,
+    verification_status = ?,
+    verification_historical_engine_version = ?,
+    verification_engine_version = ?,
+    difference_count = ?,
+    diagnostics_json = ?
+WHERE provenance_id = ?;
+
+deleteAll:
+DELETE FROM schedule_decision_provenance;
+
+countAll:
+SELECT count(*)
+FROM schedule_decision_provenance;

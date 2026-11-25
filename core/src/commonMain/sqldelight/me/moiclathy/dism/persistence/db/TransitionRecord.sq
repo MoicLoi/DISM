@@ -1,0 +1,37 @@
+CREATE TABLE transition_record (
+    id TEXT NOT NULL PRIMARY KEY,
+
+    type TEXT NOT NULL,
+
+    subject_id TEXT NOT NULL,
+    predicate TEXT NOT NULL,
+    object_id TEXT NOT NULL,
+
+    effective_at TEXT NOT NULL,
+
+    semantic_confidence REAL,
+
+    old_subject_id TEXT,
+    old_predicate TEXT,
+    old_object_id TEXT
+);
+
+selectAll:
+SELECT * FROM transition_record ORDER BY effective_at ASC;
+
+selectAt:
+SELECT * FROM transition_record WHERE effective_at = ? ORDER BY id ASC;
+
+insertRecord:
+INSERT INTO transition_record(
+    id,
+    type,
+    subject_id,
+    predicate,
+    object_id,
+    effective_at,
+    semantic_confidence,
+    old_subject_id,
+    old_predicate,
+    old_object_id
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);

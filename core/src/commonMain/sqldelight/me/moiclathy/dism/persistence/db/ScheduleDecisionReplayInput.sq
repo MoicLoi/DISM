@@ -1,0 +1,45 @@
+CREATE TABLE schedule_decision_replay_input (
+    snapshot_id TEXT NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    evaluated_at_epoch_ms INTEGER NOT NULL,
+    schedule_revision INTEGER NOT NULL,
+    engine_version TEXT NOT NULL,
+    payload_format_version INTEGER NOT NULL,
+    payload_json TEXT NOT NULL
+);
+
+CREATE INDEX schedule_decision_replay_input_item_idx
+ON schedule_decision_replay_input(item_id, evaluated_at_epoch_ms);
+
+insertOrReplace:
+INSERT OR REPLACE INTO schedule_decision_replay_input(
+    snapshot_id,
+    item_id,
+    evaluated_at_epoch_ms,
+    schedule_revision,
+    engine_version,
+    payload_format_version,
+    payload_json
+)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectById:
+SELECT *
+FROM schedule_decision_replay_input
+WHERE snapshot_id = ?;
+
+selectAllIds:
+SELECT snapshot_id
+FROM schedule_decision_replay_input
+ORDER BY evaluated_at_epoch_ms ASC, snapshot_id ASC;
+
+deleteById:
+DELETE FROM schedule_decision_replay_input
+WHERE snapshot_id = ?;
+
+deleteAll:
+DELETE FROM schedule_decision_replay_input;
+
+countAll:
+SELECT count(*)
+FROM schedule_decision_replay_input;

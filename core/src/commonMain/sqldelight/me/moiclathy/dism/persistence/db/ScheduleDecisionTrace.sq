@@ -1,0 +1,127 @@
+CREATE TABLE schedule_decision_trace (
+    trace_id TEXT NOT NULL PRIMARY KEY,
+    item_id TEXT NOT NULL,
+    created_at_epoch_ms INTEGER NOT NULL,
+    schedule_revision INTEGER NOT NULL,
+    engine_version TEXT NOT NULL
+);
+
+CREATE INDEX schedule_decision_trace_item_idx
+ON schedule_decision_trace(item_id, created_at_epoch_ms);
+
+CREATE TABLE schedule_decision_trace_entry (
+    entry_id TEXT NOT NULL PRIMARY KEY,
+    trace_id TEXT NOT NULL,
+    ordinal INTEGER NOT NULL,
+    stage TEXT NOT NULL,
+    message TEXT NOT NULL,
+    values_json TEXT NOT NULL,
+    decisive INTEGER NOT NULL
+);
+
+CREATE INDEX schedule_decision_trace_entry_trace_idx
+ON schedule_decision_trace_entry(trace_id, ordinal);
+
+insertOrReplaceTrace:
+INSERT OR REPLACE INTO schedule_decision_trace(
+    trace_id,
+    item_id,
+    created_at_epoch_ms,
+    schedule_revision,
+    engine_version
+)
+VALUES (?, ?, ?, ?, ?);
+
+deleteEntriesForTrace:
+DELETE FROM schedule_decision_trace_entry
+WHERE trace_id = ?;
+
+deleteTraceById:
+DELETE FROM schedule_decision_trace
+WHERE trace_id = ?;
+
+deleteAllEntries:
+DELETE FROM schedule_decision_trace_entry;
+
+deleteAllTraces:
+DELETE FROM schedule_decision_trace;
+
+insertOrReplaceEntry:
+INSERT OR REPLACE INTO schedule_decision_trace_entry(
+    entry_id,
+    trace_id,
+    ordinal,
+    stage,
+    message,
+    values_json,
+    decisive
+)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+selectTraceById:
+SELECT *
+FROM schedule_decision_trace
+WHERE trace_id = ?;
+
+selectEntriesForTrace:
+SELECT *
+FROM schedule_decision_trace_entry
+WHERE trace_id = ?
+ORDER BY ordinal ASC, entry_id ASC;
+
+selectFiltered:
+SELECT
+    t.trace_id,
+    t.item_id,
+    t.created_at_epoch_ms,
+    t.schedule_revision,
+    t.engine_version
+FROM schedule_decision_trace AS t
+WHERE (:item_id IS NULL OR t.item_id = :item_id)
+  AND (:from_epoch_ms IS NULL OR t.created_at_epoch_ms >= :from_epoch_ms)
+  AND (:until_epoch_ms IS NULL OR t.created_at_epoch_ms <= :until_epoch_ms)
+  AND (
+        :stage IS NULL
+        OR EXISTS (
+            SELECT 1
+            FROM schedule_decision_trace_entry AS e
+            WHERE e.trace_id = t.trace_id
+              AND e.stage = :stage
+        )
+      )
+  AND (
+        :decisive_only = 0
+        OR EXISTS (
+            SELECT 1
+            FROM schedule_decision_trace_entry AS e
+            WHERE e.trace_id = t.trace_id
+              AND e.decisive = 1
+        )
+      )
+ORDER BY t.created_at_epoch_ms DESC, t.trace_id DESC
+LIMIT :limit;
+
+countFiltered:
+SELECT count(*)
+FROM schedule_decision_trace AS t
+WHERE (:item_id IS NULL OR t.item_id = :item_id)
+  AND (:from_epoch_ms IS NULL OR t.created_at_epoch_ms >= :from_epoch_ms)
+  AND (:until_epoch_ms IS NULL OR t.created_at_epoch_ms <= :until_epoch_ms)
+  AND (
+        :stage IS NULL
+        OR EXISTS (
+            SELECT 1
+            FROM schedule_decision_trace_entry AS e
+            WHERE e.trace_id = t.trace_id
+              AND e.stage = :stage
+        )
+      )
+  AND (
+        :decisive_only = 0
+        OR EXISTS (
+            SELECT 1
+            FROM schedule_decision_trace_entry AS e
+            WHERE e.trace_id = t.trace_id
+              AND e.decisive = 1
+        )
+      );

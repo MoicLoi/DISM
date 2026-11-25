@@ -1,0 +1,34 @@
+CREATE TABLE entity_alias (
+    entity_id TEXT NOT NULL,
+    value TEXT NOT NULL,
+    source TEXT NOT NULL,
+    confidence REAL NOT NULL,
+
+    PRIMARY KEY (
+        entity_id,
+        value
+    ),
+
+    FOREIGN KEY (
+        entity_id
+    )
+    REFERENCES entity(id)
+    ON DELETE CASCADE
+);
+
+selectAll:
+SELECT * FROM entity_alias;
+
+selectByEntityId:
+SELECT * FROM entity_alias WHERE entity_id = ?;
+
+insertOrReplace:
+INSERT OR REPLACE INTO entity_alias(
+    entity_id,
+    value,
+    source,
+    confidence
+) VALUES (?, ?, ?, ?);
+
+deleteAll:
+DELETE FROM entity_alias;
